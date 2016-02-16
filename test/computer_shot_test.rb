@@ -1,12 +1,12 @@
 require 'pry'
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/computer_shot'
+require './lib/computer_play'
 
-class ComputerShotTest < Minitest::Test
+class ComputerPlayTest < Minitest::Test
   def test_computer_shot_creates_instance
-    cs=  ComputerShot.new
-    cs.instance_of? ComputerShot
+    cs=  ComputerPlay.new
+    cs.instance_of? ComputerPlay
   end
 
   def test_computer_guess_falls_in_grid

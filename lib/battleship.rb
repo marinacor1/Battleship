@@ -9,7 +9,7 @@ class Battleship
     puts "\nWould you like to (p)lay, read the (i)nstructions, or (q)uit the game?\n"
     output = gets.chomp
     if output == 'p'|| output == 'play'
-      sg = StartGame.new
+      p = PlayerPrompt.new
     elsif output == 'i'|| output == 'instructions'
       i = Instructions.new
       i.instructions
