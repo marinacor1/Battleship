@@ -10,6 +10,7 @@ class Battleship
     output = gets.chomp
     if output == 'p'|| output == 'play'
       p = PlayerPrompt.new
+      p.player_initial_ship_setup
     elsif output == 'i'|| output == 'instructions'
       i = Instructions.new
       i.instructions
