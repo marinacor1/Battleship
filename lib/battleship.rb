@@ -1,4 +1,5 @@
 require_relative 'instructions'
+require_relative 'player_prompt'
 
 class Battleship
   def initialize
