@@ -9,12 +9,18 @@ class BattleshipTest < Minitest::Test
     bs.instance_of? Battleship
   end
 
-  def test_battleship_starts_start_game_sequence
+  def test_battleship_starts_start_game_sequence_when_type_play
     skip
-    
+    bs= Battleship.new
+    #user_output = p
+    bs.instance_of? StartGame
   end
 
   def test_battleship_allows_to_read_instructions
+    skip
+    bs= Battleship.new
+    #user_output = p
+    bs.instance_of? Instructions 
   end
 
   def test_battleship_quits_when_prompted

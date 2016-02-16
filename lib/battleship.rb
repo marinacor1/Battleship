@@ -1,3 +1,5 @@
+require_relative 'instructions'
+
 class Battleship
   def initialize
     puts "Welcome to BATTLESHIP"
