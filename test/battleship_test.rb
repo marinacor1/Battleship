@@ -17,4 +17,7 @@ class BattleshipTest < Minitest::Test
   def test_battleship_allows_to_read_instructions
   end
 
+  def test_battleship_quits_when_prompted
+  end
+
 end
