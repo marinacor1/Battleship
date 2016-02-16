@@ -10,5 +10,6 @@ class GameTest < Minitest::Test
     g.instance_of? Game
   end
 
-  def test_
+
+  
 end
