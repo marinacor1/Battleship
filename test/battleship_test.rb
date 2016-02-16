@@ -10,7 +10,8 @@ class BattleshipTest < Minitest::Test
   end
 
   def test_battleship_starts_start_game_sequence
-
+    skip
+    
   end
 
   def test_battleship_allows_to_read_instructions
