@@ -13,6 +13,11 @@ class PlayerPromptTest < Minitest::Test
   def test_pp_prompts_player_to_play
   end
 
-  def test 
+  def test_if_player_gives_invalid_input_returns_error
+  end
+
+  def test_player_prompt_allows_coordinate_info
+  end
+
 
 end
