@@ -19,5 +19,8 @@ class PlayerPromptTest < Minitest::Test
   def test_player_prompt_allows_coordinate_info
   end
 
+  def test_after_play_player_is_prompted_to_end
+  end
+
 
 end
