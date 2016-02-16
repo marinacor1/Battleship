@@ -1,8 +1,7 @@
-gem 'minitest', '~5.2'
 require 'pry'
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative 'battleship'
+require './lib/battleship'
 
 class BattleshipTest < Minitest::Test
   def test_battleship_creates_instance

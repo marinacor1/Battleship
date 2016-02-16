@@ -1,8 +1,7 @@
-gem 'minitest', '~5.2'
 require 'pry'
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative 'ship_map'
+require './lib/ship_map'
 
 class ShipMapTest < Minitest::Test
   def test_ship_map_instantiates

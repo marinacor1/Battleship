@@ -1,8 +1,7 @@
-gem 'minitest', '~5.2'
 require 'pry'
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative 'player_feedback'
+require './lib/player_feedback'
 
 class PlayerFeedbackTest < Minitest::Test
   def test_player_feedback_creates_instance_of_PF
@@ -24,3 +23,4 @@ class PlayerFeedbackTest < Minitest::Test
 
   def test_if_hit_and_last_ship_ends_game
   end
+end

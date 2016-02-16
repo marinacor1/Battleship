@@ -1,8 +1,7 @@
-gem 'minitest', '~5.2'
 require 'pry'
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative 'computer_shot'
+require './lib/computer_shot'
 
 class ComputerShotTest < Minitest::Test
   def test_computer_shot_creates_instance

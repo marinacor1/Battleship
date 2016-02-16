@@ -1,8 +1,7 @@
-gem 'minitest', '~5.2'
 require 'pry'
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative 'game'
+require './lib/game'
 
 class GameTest < Minitest::Test
   def test_game_initializes
@@ -11,5 +10,5 @@ class GameTest < Minitest::Test
   end
 
 
-  
+
 end
