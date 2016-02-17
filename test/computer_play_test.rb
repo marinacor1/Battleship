@@ -9,35 +9,35 @@ class ComputerPlayTest < Minitest::Test
     cs.instance_of? ComputerPlay
   end
 
-  def test_computer_gives_is_five_coordinates
+  def test_computer_gives_five_coordinates
     cs=  ComputerPlay.new
-    assert_equal 5, cs.initial_computer_ship_setup.length
+    setup = cs.computer_generated_ship_placement
+    assert_equal 5, setup.length
   end
 
   def test_computer_guess_falls_in_grid
     cs=  ComputerPlay.new
-    @possible_responses = [["A1", "A2", "A3", "A4"], ["B1", "B2", "B3", "B4"], ["C1", "C2", "C3", "C4"], ["D1", "D2", "D3", "D4"]]
-    guess = cs.initial_computer_ship_setup
-    assert cs.possible_responses.include?(guess[0])
-    assert cs.possible_responses.include?(guess[1])
-    assert cs.possible_responses.include?(guess[2])
-    assert cs.possible_responses.include?(guess[3])
-    assert cs.possible_responses.include?(guess[4])
+    guess = cs.computer_generated_ship_placement
+    assert cs.possible_small_responses.include?(guess[0])
+    assert cs.possible_small_responses.include?(guess[1])
+    assert cs.possible_large_responses.include?(guess[2])
+    assert cs.possible_large_responses.include?(guess[3])
+    assert cs.possible_large_responses.include?(guess[4])
   end
 
-  def test_computer_play_does_not_call_on_a_previous_before
+  def test_computer_setup_has_no_duplicates
     cs=  ComputerPlay.new
-    guess = cs.initial_computer_ship_setup
-    duplicates = guess.detect { |coordinate| guess.count(coordinate) > 1}
-    assert duplicates.empty?
+    guess = cs.computer_generated_ship_placement
+    guess_without_doubles = guess.uniq
+    assert guess == guess_without_doubles
   end
 
   def test_computer_play_is_random
     skip
     cs = ComputerPlay.new
-    guess = cs.initial_computer_ship_setup
+    guess = cs.computer_generated_ship_placement
     cs2 = ComputerPlay.new
-    guess2 = cs.initial_computer_ship_setup
+    guess2 = cs.computer_generated_ship_placement
     refute guess == guess2
   end
 
