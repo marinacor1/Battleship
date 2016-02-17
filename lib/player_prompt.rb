@@ -1,8 +1,10 @@
 require 'pry'
 require_relative 'ship_map'
 require_relative 'game'
+require_relative 'responses'
 
 class PlayerPrompt
+  include Responses
   attr_reader :error, :player_shot
 
   def initialize
@@ -16,16 +18,11 @@ class PlayerPrompt
   end
 
   def player_initial_ship_setup
-    puts "\nI have laid out my ships on the grid. \nYou now need to layout your two ships.\nThe first ship is two units long and the second ship is three units long.\nThe grid has A1 at the top left and D4 at the bottom right.\n\nHere's an example of the grid: \n ============\n . 1 2 3 4\nA\nB\nC\nD\n\nEnter the squares for the two-unit ship:\n\nEx.A1 A2 B1 B2 B3\n\n\nChoose wisely. Leave spaces between each coordinate."
+    player_initial_ship_prompt
     @player_init_setup = gets.chomp.upcase
     input = @player_init_setup
-    #we need to send this guess over to game.rb
-    #
     coordinates_check(input)
-  end
-
-  def player_setup
-    @player_init_setup
+    input
   end
 
   def coordinates_check(input)
@@ -68,16 +65,14 @@ class PlayerPrompt
   def map_display
     sm = ShipMap.new(@a, @b, @c, @d)
     sm.print_initial_player_map
-    shot_prompt
   end
 
   def shot_prompt
-    puts "\nNow it's your turn to fire. You will choose one coordinate for one shot.  If you guess correctly, it is a hit. If you guess incorrectly, it is a miss. If you guess outside the grid, you will get an error."
-    @player_shot = gets.chomp.upcase    
+    player_shot_prompt
+    @player_shot = gets.chomp.upcase
   end
 
   def erroneous_response
-    puts "\nThis is not a valid option. Try again."
     @error = true
     player_initial_ship_setup
   end

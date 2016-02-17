@@ -47,10 +47,12 @@ class ComputerPlay
 
   def large_ship_placement
     random_row = rand(0..3)
+    # binding.pry
     @computer_placement << @possible_responses[random_row].shuffle.pop
     #if you shuffle! you can't get coordinate place, if you leave it, you get repeats
-    ship_two_coordinate_place = @possible_responses[random_row].index(@computer_placement[1])
-    @computer_placement.delete_at(ship_two_coordinate_place)
+    ship_two_coordinate_place = @possible_responses[random_row].index(@computer_placement[2])
+    # binding.pry
+    @possible_responses.delete_at(ship_two_coordinate_place)
     # binding.pry
     ship_two_letter_row = @computer_placement[2][0]
     if ship_two_coordinate_place <= 1

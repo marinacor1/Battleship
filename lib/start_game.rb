@@ -19,18 +19,22 @@ class StartGame
       i = Instructions.new
       i.instructions
     elsif output == 'q' || output == 'quit'
-       abort( "\nExiting game.")
+      abort( "\nExiting game.")
      else
-       erroneous_response
+      erroneous_response
      end
    end
 
   def game_flow
     pp = PlayerPrompt.new
     piss = pp.player_initial_ship_setup
+    #this output is returning nil
+    binding.pry
     cp = ComputerPlay.new
     icss = cp.initial_computer_ship_setup
     g = Game.new(piss, icss)
+    pp.shot_prompt
+    #hit_or_miss
     end
 
   def erroneous_response
