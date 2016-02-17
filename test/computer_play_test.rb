@@ -18,11 +18,12 @@ class ComputerPlayTest < Minitest::Test
   def test_computer_guess_falls_in_grid
     cs=  ComputerPlay.new
     guess = cs.computer_generated_ship_placement
-    assert cs.possible_small_responses.include?(guess[0])
-    assert cs.possible_small_responses.include?(guess[1])
-    assert cs.possible_large_responses.include?(guess[2])
-    assert cs.possible_large_responses.include?(guess[3])
-    assert cs.possible_large_responses.include?(guess[4])
+    # binding.pry
+    assert cs.possible_small_responses.flatten.include?(guess[0])
+    assert cs.possible_small_responses.flatten.include?(guess[1])
+    assert cs.possible_large_responses.flatten.include?(guess[2])
+    assert cs.possible_large_responses.flatten.include?(guess[3])
+    assert cs.possible_large_responses.flatten.include?(guess[4])
   end
 
   def test_computer_setup_has_no_duplicates
