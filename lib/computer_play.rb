@@ -16,10 +16,10 @@ class ComputerPlay
 
   def small_ship_placement
     random_row = rand(0..3)
-    @guess << @possible_responses[random_row].shuffle!.pop
+    @guess << @possible_responses[random_row].shuffle.pop
     coordinate_place = @possible_responses[random_row].index(@guess[0])
     letter_row = @guess[0][0]
-    if coordinate_place < 3
+    if coordinate_place <= 2
       small_horizontal_placement(coordinate_place, letter_row, random_row)
     else
       small_vertical_placement(coordinate_place, letter_row)
@@ -46,10 +46,14 @@ class ComputerPlay
 
   def large_ship_placement
     random_row = rand(0..3)
-    @guess << @possible_responses[random_row].shuffle!.pop
-    ship_two_coordinate_place = @possible_responses[random_row].index(@guess[2])
+    binding.pry
+    @guess << @possible_responses[random_row].shuffle.pop
+    #if you shuffle! you can't get coordinate place, if you leave it, you get repeats
+    ship_two_coordinate_place = @possible_responses[random_row].index(@guess[1])
+    @guess.delete_at(ship_two_coordinate_place)
+    # binding.pry
     ship_two_letter_row = @guess[2][0]
-    if ship_two_coordinate_place < 2
+    if ship_two_coordinate_place <= 1
       large_horizontal_placement(random_row, ship_two_coordinate_place)
     else
       large_vertical_placement(ship_two_coordinate_place, ship_two_letter_row)
@@ -58,7 +62,6 @@ class ComputerPlay
 
   def large_horizontal_placement(random_row, ship_two_coordinate_place)
     @guess << @possible_responses[random_row][ship_two_coordinate_place + 1]
-    @possible_responses[random_row].delete_at(ship_two_coordinate_place + 1)
     @guess << @possible_responses[random_row][ship_two_coordinate_place + 1]
     @possible_responses[random_row].delete_at(ship_two_coordinate_place + 1)
   end

@@ -1,4 +1,7 @@
 require 'pry'
+require_relative 'ship_map'
+require_relative 'game'
+
 class PlayerPrompt
   attr_reader :error, :a, :b, :c, :d
 
@@ -48,12 +51,20 @@ class PlayerPrompt
         @d.delete_at(coordinate[1].to_i + 1)
       end
     end
-    player_sees_map
+    map_display
   end
 
-  def player_sees_map
+  def map_display
     sm = ShipMap.new
     sm.print_initial_player_map
+    shot_prompt
+  end
+
+  def shot_prompt
+    puts "\nNow it's your turn to fire. You will choose one coordinate for one shot.  If you guess correctly, it is a hit. If you guess incorrectly, it is a miss. If you guess outside the grid, you will get an error."
+    guess = gets.chomp
+    g = Game.new(guess)
+    g.hit_or_miss
   end
 
   def erroneous_response

@@ -10,10 +10,9 @@ class PlayerPromptTest < Minitest::Test
   end
 
   def test_if_player_gives_invalid_input_returns_error
-    skip
-    #can't test bc erroneous response calls back into method initial ship setup
     pp = PlayerPrompt.new
-    assert_equal true,  pp.coordinates_check("WW").error
+    pp.coordinates_check("WW")
+    assert pp.error
   end
 
   def test_player_prompt_organizes_coordinate_info
@@ -23,6 +22,12 @@ class PlayerPromptTest < Minitest::Test
     assert_equal ["b:", nil, nil, nil, "X"], pp.b
     assert_equal ["c:", nil, nil, nil, "X"], pp.c
     assert_equal ["d:", nil, nil, nil, nil], pp.d
+  end
+
+  def test_player_prompt_asks_player_for_shot
+  end
+
+  def test_PP_gives_error_if_invalid_shot_request
   end
 
   def test_after_play_player_is_prompted_to_end
