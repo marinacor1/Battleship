@@ -16,6 +16,7 @@ class ComputerPlayTest < Minitest::Test
 
   def test_computer_guess_falls_in_grid
     cs=  ComputerPlay.new
+    @possible_responses = [["A1", "A2", "A3", "A4"], ["B1", "B2", "B3", "B4"], ["C1", "C2", "C3", "C4"], ["D1", "D2", "D3", "D4"]]
     guess = cs.initial_computer_ship_setup
     assert cs.possible_responses.include?(guess[0])
     assert cs.possible_responses.include?(guess[1])
@@ -24,10 +25,20 @@ class ComputerPlayTest < Minitest::Test
     assert cs.possible_responses.include?(guess[4])
   end
 
-  def test_computer_shot_does_not_call_on_a_previous_before
+  def test_computer_play_does_not_call_on_a_previous_before
+    cs=  ComputerPlay.new
+    guess = cs.initial_computer_ship_setup
+    duplicates = guess.detect { |coordinate| guess.count(coordinate) > 1}
+    assert duplicates.empty?
   end
 
-  def test_computer_shot_is_random
+  def test_computer_play_is_random
+    skip
+    cs = ComputerPlay.new
+    guess = cs.initial_computer_ship_setup
+    cs2 = ComputerPlay.new
+    guess2 = cs.initial_computer_ship_setup
+    refute guess == guess2
   end
 
   def test_after_computer_plays_shows_info_about_play
