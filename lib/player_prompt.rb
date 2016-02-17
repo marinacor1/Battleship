@@ -8,10 +8,10 @@ class PlayerPrompt
   def initialize
     @error = false
     @possible_responses = ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4", "D1", "D2", "D3", "D4"]
-    @a = ["a:", nil, nil, nil, nil]
-    @b = ["b:", nil, nil, nil, nil]
-    @c = ["c:", nil, nil, nil, nil]
-    @d = ["d:", nil, nil, nil, nil]
+    @a = ["a:", " ", " ", " ", " "]
+    @b = ["b:", " ", " ", " ", " "]
+    @c = ["c:", " ", " ", " ", " "]
+    @d = ["d:", " ", " ", " ", " "]
   end
 
   def player_initial_ship_setup
@@ -28,6 +28,7 @@ class PlayerPrompt
       else
         count = count
       end
+      #check to see if the guesses are linking i.e. not just d1 a3 b2
     end
       if count == 5
         coordinate_setup(input)
@@ -57,9 +58,8 @@ class PlayerPrompt
   end
 
   def map_display
-    #this didn't work
-    binding.pry
-    sm = ShipMap.new
+    # binding.pry
+    sm = ShipMap.new(@a, @b, @c, @d)
     sm.print_initial_player_map
     shot_prompt
   end
@@ -72,8 +72,8 @@ class PlayerPrompt
   end
 
   def erroneous_response
-    @error = true
     puts "\nThis is not a valid option. Try again."
+    @error = true
     player_initial_ship_setup
   end
 
