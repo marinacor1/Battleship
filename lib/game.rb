@@ -1,15 +1,17 @@
 require_relative 'player_prompt'
+require_relative 'computer_play'
 
 class Game
-  attr_reader :shot, :a, :b, :c, :d
+  attr_reader :shot, :player_setup, :computer_setup, :computer_guess
 
-  def initialize(shot, player_a, player_b, player_c, player_d) #A1
-    @shot = shot
+  #don't pass in anything because both computer play and player prompt need to be able to initialize game
+  def initialize#A1
     @possible_responses = ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4", "D1", "D2", "D3", "D4"]
-    @player_a = player_a #X X nil X
-    @player_b = player_b
-    @player_c = player_c
-    @player_d = player_d
+    pp = PlayerPrompt.new
+    @player_setup = pp.player_guess
+    #it doesn't read player_guess. returns whatever is in the initialize method
+    cp = ComputerPlay.new
+    @computer_setup = CP.computer_guess
   end
 
   def map_reading
