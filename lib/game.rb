@@ -18,16 +18,14 @@ class Game
 
   def hit_or_miss
     if @shot.start_with?("A")
-      if@shot[1] ==
-      end
+      # if@shot[1] ==
+      # end
     elsif @shot.start_with?("B")
 
     elsif @shot.start_with?("C")
 
     else # @shot.start_with?("D")
     end
-
-
-
   end
+
 end

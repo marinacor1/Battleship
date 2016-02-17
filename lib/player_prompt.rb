@@ -16,7 +16,7 @@ class PlayerPrompt
 
   def player_initial_ship_setup
     puts "\nI have laid out my ships on the grid. \nYou now need to layout your two ships.\nThe first ship is two units long and the second ship is three units long.\nThe grid has A1 at the top left and D4 at the bottom right.\n\nHere's an example of the grid: \n ============\n . 1 2 3 4\nA\nB\nC\nD\n\nEnter the squares for the two-unit ship:\n\nEx.A1 A2 B1 B2 B3\n\n\nChoose wisely. Leave spaces between each coordinate."
-    input = gets.chomp
+    input = gets.chomp.upcase
     coordinates_check(input)
   end
 
@@ -25,17 +25,19 @@ class PlayerPrompt
     @possible_responses.each do |coordinate|
       if input.split.include?(coordinate)
         count +=1
+      else
+        count = count
       end
     end
       if count == 5
-        coordinate_setup
+        coordinate_setup(input)
       else
         erroneous_response
       end
   end
 
   def coordinate_setup(input)
-    input_array = input.upcase.split
+    input_array = input.split
     input_array.each do |coordinate|
       if coordinate.start_with?("A")
         @a.insert(coordinate[1].to_i, "X")
@@ -55,6 +57,8 @@ class PlayerPrompt
   end
 
   def map_display
+    #this didn't work
+    binding.pry
     sm = ShipMap.new
     sm.print_initial_player_map
     shot_prompt
@@ -62,7 +66,7 @@ class PlayerPrompt
 
   def shot_prompt
     puts "\nNow it's your turn to fire. You will choose one coordinate for one shot.  If you guess correctly, it is a hit. If you guess incorrectly, it is a miss. If you guess outside the grid, you will get an error."
-    guess = gets.chomp
+    guess = gets.chomp.upcase
     g = Game.new(guess, @a, @b, @c, @d)
     g.hit_or_miss
   end
