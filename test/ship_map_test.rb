@@ -12,7 +12,7 @@ class ShipMapTest < Minitest::Test
   def test_ship_map_has_four_by_four_grid
     skip
     sm = ShipMap.new
-    assert_equal 4, sm.length
+    assert_equal 4, sm.a.length
     assert_equal 4, sm.width #this is incorrect
   end
 

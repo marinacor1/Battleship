@@ -10,7 +10,6 @@ class PlayerPromptTest < Minitest::Test
   end
 
   def test_if_player_gives_invalid_input_returns_error
-    skip
     pp = PlayerPrompt.new
     assert pp.coordinates_check("WW").error
   end
@@ -18,10 +17,10 @@ class PlayerPromptTest < Minitest::Test
   def test_player_prompt_organizes_coordinate_info
     pp = PlayerPrompt.new
     pp.coordinate_setup("a1 a2 a4 b4 c4")
-    assert_equal ["A:", "X", "X", nil, "X"], pp.a
-    assert_equal ["B:", nil, nil, nil, "X"], pp.b
-    assert_equal ["C:", nil, nil, nil, "X"], pp.c
-    assert_equal ["D:", nil, nil, nil, nil], pp.d
+    assert_equal ["a:", "X", "X", nil, "X"], pp.a
+    assert_equal ["b:", nil, nil, nil, "X"], pp.b
+    assert_equal ["c:", nil, nil, nil, "X"], pp.c
+    assert_equal ["d:", nil, nil, nil, nil], pp.d
   end
 
   def test_after_play_player_is_prompted_to_end
