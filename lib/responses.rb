@@ -1,5 +1,14 @@
 module Responses
 
+  def welcome_prompt
+    puts "Welcome to BATTLESHIP"
+  end
+
+  def game_choices_prompt
+    puts "\nWould you like to (p)lay, read the (i)nstructions, or (q)uit the game?\n"
+  end
+
+
   def player_initial_ship_prompt
     puts "\nI have laid out my ships on the grid. \nYou now need to layout your two ships.\nThe first ship is two units long and the second ship is three units long.\nThe grid has A1 at the top left and D4 at the bottom right.\n\nHere's an example of the grid: \n ============\n . 1 2 3 4\nA\nB\nC\nD\n\nEnter the squares for the three unit ship and two unit ship:\n\nEx.A1 A2 B1 B2 B3\n\n\nChoose wisely. Leave spaces between each coordinate."
   end
@@ -11,6 +20,7 @@ module Responses
   def error_prompt
     puts "\nThis is not a valid option. Try again."
   end
+
 
 
 end

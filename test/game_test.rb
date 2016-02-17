@@ -5,14 +5,14 @@ require './lib/game'
 
 class GameTest < Minitest::Test
   def test_game_initializes
-    g = Game.new()
+    g = Game.new("A1 A2 A3 B2 B3", "A1 A2 A3 B2 B3")
     g.instance_of? Game
   end
 
   def test_game_identifies_accurately_when_a_ship_is_hit
-    g = Game.new
-    g.hit_or_miss
-    assert_equal "H", g.particular_spot_in_grid
+    g = Game.new("A1 A2 A3 B2 B3", "A1 A2 A3 B2 B3")
+    g.hit_or_miss("A1")
+    assert_equal ["a:", "H", " ", " ", " "], g.a_hm_map
   end
 
   def test_game_identifies_accurately_when_a_ship_is_a_miss

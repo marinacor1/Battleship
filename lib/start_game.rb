@@ -1,13 +1,15 @@
 require_relative 'instructions'
 require_relative 'player_prompt'
+require_relative 'responses'
 
 class StartGame
+  include Responses
   def initialize
-    puts "Welcome to BATTLESHIP"
+    welcome_prompt
   end
 
   def output_reader
-    puts "\nWould you like to (p)lay, read the (i)nstructions, or (q)uit the game?\n"
+    game_choices_prompt
     output = gets.chomp
     user_output(output)
   end
@@ -28,17 +30,15 @@ class StartGame
   def game_flow
     pp = PlayerPrompt.new
     piss = pp.player_initial_ship_setup
-    #this output is returning nil
-    binding.pry
     cp = ComputerPlay.new
-    icss = cp.initial_computer_ship_setup
+    icss = cp.computer_generated_ship_placement
     g = Game.new(piss, icss)
-    pp.shot_prompt
-    #hit_or_miss
+    player_shot = pp.shot_prompt
+    hit_or_miss(player_shot)
     end
 
   def erroneous_response
-    puts "\nThis is not a valid option. Try again."
+    error_prompt
     user_output
   end
 

@@ -5,7 +5,7 @@ require_relative 'responses'
 
 class PlayerPrompt
   include Responses
-  attr_reader :error, :player_shot
+  attr_reader :error
 
   def initialize
     @error = false
@@ -14,7 +14,6 @@ class PlayerPrompt
     @b = ["b:", " ", " ", " ", " "]
     @c = ["c:", " ", " ", " ", " "]
     @d = ["d:", " ", " ", " ", " "]
-    @player_shot = " "
   end
 
   def player_initial_ship_setup
@@ -69,7 +68,7 @@ class PlayerPrompt
 
   def shot_prompt
     player_shot_prompt
-    @player_shot = gets.chomp.upcase
+    player_shot = gets.chomp.upcase
   end
 
   def erroneous_response
