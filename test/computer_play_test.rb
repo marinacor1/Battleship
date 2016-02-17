@@ -28,7 +28,6 @@ class ComputerPlayTest < Minitest::Test
   def test_computer_play_does_not_call_on_a_previous_before
     cs=  ComputerPlay.new
     guess = cs.initial_computer_ship_setup
-    # binding.pry
     duplicates = guess.detect { |coordinate| guess.count(coordinate) > 1}
     assert duplicates.empty?
   end
