@@ -1,13 +1,13 @@
+require 'pry'
 require_relative 'player_prompt'
 
 class ShipMap
-  attr_reader :a, :b, :c, :d
 
-  def initialize(player_a, player_b, player_c, player_d) #A1
-    @player_a = player_a.join(" ") #X X nil X
-    @player_b = player_b.join(" ")
-    @player_c = player_c.join(" ")
-    @player_d = player_d.join(" ")
+  def initialize(player_map)
+    @player_a = player_map[0].join(" ")
+    @player_b = player_map[1].join(" ")
+    @player_c = player_map[2].join(" ")
+    @player_d = player_map[3].join(" ")
   end
 
   def print_initial_player_map

@@ -18,16 +18,16 @@ class Game
 
 
   def hit_or_miss(player_shot)
-    # binding.pry
     if @computer_ships.include?(player_shot)
       @player_hits +=1
       add_hit_to_map(player_shot)
     else
-      add_miss_to_map
+      add_miss_to_map(player_shot)
     end
   end
 
   def add_hit_to_map(player_shot)
+    binding.pry
     c_ships_array = @computer_ships.split(" ")
     if player_shot.start_with?("A")
       @a_hm_map.insert(player_shot[1].to_i, "H")
@@ -45,7 +45,21 @@ class Game
 
   end
 
-  def add_miss_to_map
+  def add_miss_to_map(player_shot)
+    if player_shot.start_with?("A")
+      @a_hm_map.insert(player_shot[1].to_i, "M")
+      @a_hm_map.delete_at(player_shot[1].to_i + 1)
+    elsif player_shot.start_with?("B")
+      @b.insert(player_shot[1].to_i, "M")
+      @b.delete_at(player_shot[1].to_i + 1)
+    elsif player_shot.start_with?("C")
+      @c.insert(player_shot[1].to_i, "M")
+      @c.delete_at(player_shot[1].to_i + 1)
+    else
+      @d.insert(player_shot[1].to_i, "M")
+      @d.delete_at(player_shot[1].to_i + 1)
+    end
+
   end
 
 end

@@ -20,14 +20,14 @@ class PlayerPrompt
     player_initial_ship_prompt
     @player_init_setup = gets.chomp.upcase
     input = @player_init_setup
-    coordinates_check(input)
+    coordinates_check
     input
   end
 
-  def coordinates_check(input)
+  def coordinates_check
     count = 0
     @possible_responses.each do |coordinate|
-      if input.split.include?(coordinate)
+      if @player_init_setup.split.include?(coordinate)
         count +=1
       else
         count = count
@@ -35,14 +35,14 @@ class PlayerPrompt
       #check to see if the guesses are linking i.e. not just d1 a3 b2 that passes
     end
       if count == 5
-        coordinate_setup(input)
+        coordinate_setup
       else
         erroneous_response
       end
   end
 
-  def coordinate_setup(input)
-    input_array = input.split
+  def coordinate_setup
+    input_array = @player_init_setup.split
     input_array.each do |coordinate|
       if coordinate.start_with?("A")
         @a.insert(coordinate[1].to_i, "X")
@@ -58,7 +58,7 @@ class PlayerPrompt
         @d.delete_at(coordinate[1].to_i + 1)
       end
     end
-    map_display
+    coordinate_array = [@a, @b, @c, @d]
   end
 
   def map_display
