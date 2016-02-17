@@ -14,8 +14,7 @@ class StartGame
 
   def user_output(output)
     if output == 'p'|| output == 'play'
-      p = PlayerPrompt.new
-      p.player_initial_ship_setup
+      game_flow
     elsif output == 'i'|| output == 'instructions'
       i = Instructions.new
       i.instructions
@@ -26,9 +25,17 @@ class StartGame
      end
    end
 
-   def erroneous_response
-      puts "\nThis is not a valid option. Try again."
-      user_output
-   end
+  def game_flow
+    pp = PlayerPrompt.new
+    piss = pp.player_initial_ship_setup
+    cp = ComputerPlay.new
+    icss = cp.initial_computer_ship_setup
+    g = Game.new(piss, icss)
+    end
+
+  def erroneous_response
+    puts "\nThis is not a valid option. Try again."
+    user_output
+  end
 
 end

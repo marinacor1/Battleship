@@ -20,7 +20,7 @@ class PlayerPromptTest < Minitest::Test
 
   def test_player_prompt_organizes_coordinate_info
     pp = PlayerPrompt.new
-    pp.coordinate_setup("a1 a2 a4 b4 c4")
+    pp.coordinate_setup("a1 a2 a4 b4 c4")#.split(" ").
     binding.pry
     assert_equal ["a:", "X", "X", " ", "X"], pp.a
     assert_equal ["b:", " ", " ", " ", "X"], pp.b
