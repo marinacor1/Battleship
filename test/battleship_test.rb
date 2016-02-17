@@ -11,19 +11,23 @@ class StartGameTest < Minitest::Test
   # end
 
   def test_battleship_starts_start_game_sequence_when_type_play
-    bs= StartGame.new
-    bs.user_output('p')
-    bs.instance_of? PlayerPrompt
+    sg= StartGame.new
+    sg.user_output('p')
+    sg.instance_of? PlayerPrompt
   end
 
   def test_battleship_allows_to_read_instructions
     skip
-    bs= StartGame.new
-    bs.user_output('i')
-    bs.instance_of? Instructions
+    sg = StartGame.new
+    sg.user_output('i')
+    sg.instance_of? Instructions
   end
 
   def test_battleship_quits_when_prompted
+    skip
+    sg = StartGame.new
+    sg.user_output('q')
+    sg.abort? #this is probably wrong 
   end
 
   def test_battleship_returns_erroneous_response_if_user_input_wrong

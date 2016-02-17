@@ -14,9 +14,9 @@ class PlayerPrompt
         count +=1
       end
     end
-    # else
-    #   erroneous_response
-    # end
+      if count != 5
+         erroneous_response
+      end
   end
 
   def erroneous_response
