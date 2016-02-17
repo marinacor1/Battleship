@@ -63,7 +63,7 @@ class PlayerPrompt
   def shot_prompt
     puts "\nNow it's your turn to fire. You will choose one coordinate for one shot.  If you guess correctly, it is a hit. If you guess incorrectly, it is a miss. If you guess outside the grid, you will get an error."
     guess = gets.chomp
-    g = Game.new(guess)
+    g = Game.new(guess, @a, @b, @c, @d)
     g.hit_or_miss
   end
 
