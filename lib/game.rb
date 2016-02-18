@@ -77,9 +77,5 @@ class Game
 
   #needs to continue playing until player/ computer wins
   #computer needs to have hits or misses
-#loop is pp.shot_prompt,
-#g.hit_or_miss,
-#sm.print_h_m_player_map,
-#feedback about game:
 
 end
