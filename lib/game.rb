@@ -6,8 +6,7 @@ class Game
   attr_reader :a_hm_map, :b_hm_map, :c_hm_map, :d_hm_map
   attr_accessor :computer_attempts, :player_attempts
 
-  def initialize(player_initial_ship_setup, computer_initial_setup)
-    @player_ships = player_initial_ship_setup
+  def initialize(player_coordinate_map, computer_initial_setup)
     @computer_ships = computer_initial_setup
     @player_hits = 0
     @computer_hits = 0
@@ -17,11 +16,7 @@ class Game
     @b_hm_map = ["b:", " ", " ", " ", " "]
     @c_hm_map = ["c:", " ", " ", " ", " "]
     @d_hm_map = ["d:", " ", " ", " ", " "]
-    #these should already be set with parent map
-    @a_p_map = ["a:", " ", " ", " ", " "]
-    @b_p_map = ["b:", " ", " ", " ", " "]
-    @c_p_map = ["c:", " ", " ", " ", " "]
-    @d_p_map = ["d:", " ", " ", " ", " "]
+    @p_map = player_coordinate_map
   end
 
 
@@ -86,7 +81,6 @@ class Game
 
   def hits_or_misses_for_player_map(player_map, computer_shot)
      @computer_attempts +=1
-    #  binding.pry
      if player_map.include?(computer_shot)
        @computer_hits +=1
        add_hit_to_p_map(player_map, computer_shot)
@@ -98,35 +92,31 @@ class Game
   def add_hit_to_p_map(player_map, computer_shot)
     puts "\n\nOh no. You were hit!".colorize(:light_red)
     puts "You were hit at position #{computer_shot}. This is guess number #{@computer_attempts}.".colorize(:yellow)
-    binding.pry
     if computer_shot.start_with?("A")
-      @a_p_map[0].insert(computer_shot[1].to_i, "*")
+      @p_map[0].insert(computer_shot[1].to_i, "*")
       # @a_p_map.delete_at(computer_shot[1].to_i + 1)
     elsif computer_shot.start_with?("B")
-      @b_p_map[1].insert(computer_shot[1].to_i, "*")
+      @p_map[1].insert(computer_shot[1].to_i, "*")
       # @b_p_map.delete_at(computer_shot[1].to_i + 1)
     elsif computer_shot.start_with?("C")
-      @c_p_map[2].insert(computer_shot[1].to_i, "*")
+      @p_map[2].insert(computer_shot[1].to_i, "*")
       # @c_p_map.delete_at(computer_shot[1].to_i + 1)
     else
-      @d_p_map[3].insert(computer_shot[1].to_i, "*")
+      @p_map[3].insert(computer_shot[1].to_i, "*")
       # @d_p_map.delete_at(computer_shot[1].to_i + 1)
     end
-      p_map = [@a_p_map, @b_p_map, @c_p_map, @d_p_map]
+    @p_map
   end
 
   def add_miss_to_p_map(player_map, computer_shot)
-    binding.pry
     puts "Nice. I missed you!".colorize(:light_blue)
     puts "I guessed at #{computer_shot}.".colorize(:green)
     print " This is guess number #{@computer_attempts}.".colorize(:light_blue)
-     #actually should return player's map
-    p_map = [@a_p_map, @b_p_map, @c_p_map, @d_p_map]
+    @p_map
   end
 
 
 
   #needs to continue playing until player/ computer wins
-  #computer needs to have hits or misses
 
 end
