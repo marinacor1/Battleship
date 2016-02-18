@@ -17,10 +17,10 @@ class Game
     @b_hm_map = ["b:", " ", " ", " ", " "]
     @c_hm_map = ["c:", " ", " ", " ", " "]
     @d_hm_map = ["d:", " ", " ", " ", " "]
-    @a_p_map = ["a:", " ", " ", " ", " "]
-    @b_p_map = ["b:", " ", " ", " ", " "]
-    @c_p_map = ["c:", " ", " ", " ", " "]
-    @d_p_map = ["d:", " ", " ", " ", " "]
+    # @a_p_map = ["a:", " ", " ", " ", " "]
+    # @b_p_map = ["b:", " ", " ", " ", " "]
+    # @c_p_map = ["c:", " ", " ", " ", " "]
+    # @d_p_map = ["d:", " ", " ", " ", " "]
   end
 
 
@@ -84,7 +84,6 @@ class Game
   end
 
   def hits_or_misses_for_player_map(player_map, computer_shot)
-     binding.pry
      @computer_attempts +=1
      if player_map.include?(computer_shot)
        @computer_hits +=1
@@ -96,28 +95,31 @@ class Game
 
   def add_hit_to_p_map(player_map, computer_shot)
     puts "\n\nOh no. You were hit!".colorize(:light_red)
-    puts "You were hit at position #{computer_shot}. This is guess number #{@computer_attempts}."
-    if player_shot.start_with?("A")
-      @a_p_map.insert(player_shot[1].to_i, "*")
-      # @a_p_map.delete_at(player_shot[1].to_i + 1)
-    elsif player_shot.start_with?("B")
-      @b_p_map.insert(player_shot[1].to_i, "*")
-      # @b_p_map.delete_at(player_shot[1].to_i + 1)
-    elsif player_shot.start_with?("C")
-      @c_p_map.insert(player_shot[1].to_i, "*")
-      # @c_p_map.delete_at(player_shot[1].to_i + 1)
+    puts "You were hit at position #{computer_shot}. This is guess number #{@computer_attempts}.".colorize(:yellow)
+    binding.pry
+    p_map = @player_ships.split(" ")
+    if computer_shot.start_with?("A")
+      p_map[0].insert(computer_shot[1].to_i, "*")
+      # @a_p_map.delete_at(computer_shot[1].to_i + 1)
+    elsif computer_shot.start_with?("B")
+      p_map[1].insert(computer_shot[1].to_i, "*")
+      # @b_p_map.delete_at(computer_shot[1].to_i + 1)
+    elsif computer_shot.start_with?("C")
+      p_map[2].insert(computer_shot[1].to_i, "*")
+      # @c_p_map.delete_at(computer_shot[1].to_i + 1)
     else
-      @d_p_map.insert(player_shot[1].to_i, "*")
-      # @d_p_map.delete_at(player_shot[1].to_i + 1)
+      p_map[3].insert(computer_shot[1].to_i, "*")
+      # @d_p_map.delete_at(computer_shot[1].to_i + 1)
     end
-    p_array = [@a_p_map, @b_p_map, @c_p_map, @d_p_map]
+    p_map
 
   end
 
   def add_miss_to_p_map(player_map, computer_shot)
-    puts "Nice. You were missed you!".colorize(:light_blue)
-    puts "I guessed at #{computer_shot}. This is guess number #{@computer_attempts}."
-
+    puts "Nice. I missed you!".colorize(:light_blue)
+    puts "I guessed at #{computer_shot}.".colorize(:green)
+    print " This is guess number #{@computer_attempts}.".colorize(:light_blue)
+    p_map = @player_ships.split(" ")
   end
 
 
