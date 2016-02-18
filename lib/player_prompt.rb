@@ -20,11 +20,11 @@ class PlayerPrompt
     player_initial_ship_prompt
     @player_init_setup = gets.chomp.upcase
     input = @player_init_setup
-    coordinates_check
+    coordinates_check(input)
     input
   end
 
-  def coordinates_check
+  def coordinates_check(input)
     count = 0
     @possible_responses.each do |coordinate|
       if @player_init_setup.split.include?(coordinate)
@@ -68,6 +68,7 @@ class PlayerPrompt
 
   def erroneous_response
     @error = true
+    error_prompt
     player_initial_ship_setup
   end
 
