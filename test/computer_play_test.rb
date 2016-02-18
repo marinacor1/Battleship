@@ -18,7 +18,6 @@ class ComputerPlayTest < Minitest::Test
   def test_computer_guess_falls_in_grid
     cs=  ComputerPlay.new
     guess = cs.computer_generated_ship_placement
-    # binding.pry
     assert cs.possible_small_responses.flatten.include?(guess[0])
     assert cs.possible_small_responses.flatten.include?(guess[1])
     assert cs.possible_large_responses.flatten.include?(guess[2])
@@ -42,12 +41,12 @@ class ComputerPlayTest < Minitest::Test
     refute guess == guess2
   end
 
-  def test_after_computer_plays_shows_info_about_play
-  end
-
-  def test_after_computer_plays_shows_map
-  end
-
-  def test_at_end_of_computer_game_goes_to_player_shot
+  def test_computer_shot_will_not_call_on_same_earlier_shot
+    cs = ComputerPlay.new
+    cs_shot_array = []
+    16.times do
+      cs_shot_array << cs.computer_shot
+    end
+    assert cs_shot_array == cs_shot_array.uniq 
   end
 end

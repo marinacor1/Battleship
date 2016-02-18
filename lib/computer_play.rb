@@ -25,6 +25,7 @@ class ComputerPlay
   end
 
   def computer_shot
+    #calls on shot already taken 
     shot = @possible_shots[rand(0..15)]
     @possible_shots.delete_at(shot.to_i)
     shot

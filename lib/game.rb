@@ -23,14 +23,12 @@ class Game
 
   def hit_or_miss(player_shot)
     @player_attempts +=1
-    # while @player_hits < 5 do
       if @computer_ships.include?(player_shot)
         @player_hits +=1
         add_hit_to_map(player_shot)
       else
         add_miss_to_map(player_shot)
       end
-    # end
   end
 
   def add_hit_to_map(player_shot)
@@ -82,6 +80,7 @@ class Game
 
   def hits_or_misses_for_player_map(computer_shot)
      @computer_attempts +=1
+     #breaks here because still running even after won
      if @player_ships.include?(computer_shot)
        @computer_hits +=1
        add_hit_to_p_map(computer_shot)

@@ -32,8 +32,8 @@ class StartGame
    end
 
   def game_flow
-    pp = PlayerPrompt.new
     sw = Stopwatch.new
+    pp = PlayerPrompt.new
     piss = pp.player_initial_ship_setup
     coordinate_map_setup = pp.coordinate_setup
     sm = ShipMap.new(coordinate_map_setup)
@@ -41,8 +41,8 @@ class StartGame
     cp = ComputerPlay.new
     icss = cp.computer_generated_ship_placement
     g = Game.new(piss, icss, coordinate_map_setup)
-    #loop begins
-    ph = g.player_total_hits
+    #these might not be getting called:
+    ph = g.player_total_hits #need to call these everytime
     ch = g.computer_total_hits
     while ph < 5 && ch < 5 do
       player_shot = pp.shot_prompt
@@ -53,13 +53,17 @@ class StartGame
       c_hm_array = g.hits_or_misses_for_player_map(computer_shot)
       shm = ShipMap.new(c_hm_array)
       shm.print_player_map
-    #loop game
-    #end game flow:
-    ph = g.player_total_hits
-    ch = g.computer_total_hits
-    eg = EndGame.new(ph, ch)
+    end
+
+    binding.pry
+    phe = g.player_total_hits
+    #error here bc no implicit of nil so means its not exiting
+    che = g.computer_total_hits
+    eg = EndGame.new(phe, che)
+    #currently printing wrong number
     eg.final_message
     sw.time_difference
+    #time also seems very short
     end
 
   def erroneous_response
