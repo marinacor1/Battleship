@@ -94,17 +94,13 @@ class Game
     puts "\n\nOh no. You were hit!".colorize(:light_red)
     puts "You were hit at position #{computer_shot}. This is guess number #{@computer_attempts}.".colorize(:yellow)
     if computer_shot.start_with?("A")
-      @p_map[0].insert(computer_shot[1].to_i, "*")
-      # @a_p_map.delete_at(computer_shot[1].to_i + 1)
+      @p_map[0][computer_shot[1].to_i].concat("*")
     elsif computer_shot.start_with?("B")
-      @p_map[1].insert(computer_shot[1].to_i, "*")
-      # @b_p_map.delete_at(computer_shot[1].to_i + 1)
+      @p_map[1][computer_shot[1].to_i].concat("*")
     elsif computer_shot.start_with?("C")
-      @p_map[2].insert(computer_shot[1].to_i, "*")
-      # @c_p_map.delete_at(computer_shot[1].to_i + 1)
+      @p_map[2][computer_shot[1].to_i].concat("*")
     else
-      @p_map[3].insert(computer_shot[1].to_i, "*")
-      # @d_p_map.delete_at(computer_shot[1].to_i + 1)
+      @p_map[3][computer_shot[1].to_i].concat("*")
     end
     @p_map
   end

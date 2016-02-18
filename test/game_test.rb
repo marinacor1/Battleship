@@ -22,10 +22,9 @@ class GameTest < Minitest::Test
   end
 
   def test_game_identifies_when_player_gets_hit
-    skip
     g = Game.new("A1 A2 A3 B1 B2", "C1 C2 C3 B3 B4", [["a:", "X", "X", "X", " "], ["b:", "X", "X", " ", " "], ["c:", " ", " ", " ", " "], ["d:", " ", " ", " ", " "]])
     g.hits_or_misses_for_player_map("B1")
-    assert_equal ["b:", "H", " ", " ", " "], g.b_hm_map
+    assert_equal ["b:", "X*", "X", " ", " "], g.p_map[1]
   end
 
   def test_game_identifies_when_player_gets_miss
