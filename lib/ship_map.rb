@@ -31,12 +31,12 @@ class ShipMap
     print "is a hit. An "
     print "M".colorize(:red)
     puts " is a miss."
-    puts "==========="
-    puts ".  1 2 3 4"
-    puts "#{hm_array[0].join(" ")}".colorize(:light_green)
-    puts "#{hm_array[1].join(" ")}".colorize(:light_green)
-    puts "#{hm_array[2].join(" ")}".colorize(:light_green)
-    puts "#{hm_array[3].join(" ")}\n".colorize(:light_green)
+    puts "===========".colorize(:yellow)
+    puts ".  1 2 3 4".colorize(:yellow)
+    puts "#{hm_array[0].join(" ")}".colorize(:yellow)
+    puts "#{hm_array[1].join(" ")}".colorize(:yellow)
+    puts "#{hm_array[2].join(" ")}".colorize(:yellow)
+    puts "#{hm_array[3].join(" ")}\n".colorize(:yellow)
   end
 
 end

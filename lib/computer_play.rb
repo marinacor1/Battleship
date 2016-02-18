@@ -20,8 +20,9 @@ class ComputerPlay
     @computer_placement.flatten
   end
 
-  # def computer_shot
-  #   shot =
-  #
-  # end
+  def computer_shot
+    shot = @possible_shots[rand(0..15)]
+    @possible_shots.delete_at(shot.to_i)
+    shot
+  end
 end

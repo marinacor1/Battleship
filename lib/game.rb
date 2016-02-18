@@ -69,10 +69,15 @@ class Game
     input = gets.chomp.upcase
 
     if input == "E" || input == "ENTER"
-      abort("\nNow it's the computer's turn.")
+      puts "\nNow it's the computer's turn."
     else
       puts "Incorrect message. Try again."
     end
+  end
+
+
+  def hits_or_misses_for_player_map(player_map, computer_shot)
+
   end
 
   #needs to continue playing until player/ computer wins
