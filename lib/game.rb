@@ -4,9 +4,10 @@ require 'colorize'
 
 class Game
   attr_reader :a_hm_map, :b_hm_map, :c_hm_map, :d_hm_map
-  attr_accessor :computer_attempts, :player_attempts
+  attr_accessor :computer_attempts, :player_attempts, :p_map
 
-  def initialize(player_coordinate_map, computer_initial_setup)
+  def initialize(player_ships, computer_initial_setup, player_coordinate_map)
+    @player_ships = player_ships
     @computer_ships = computer_initial_setup
     @player_hits = 0
     @computer_hits = 0
@@ -79,17 +80,17 @@ class Game
     end
   end
 
-  def hits_or_misses_for_player_map(player_map, computer_shot)
+  def hits_or_misses_for_player_map(computer_shot)
      @computer_attempts +=1
-     if player_map.include?(computer_shot)
+     if @player_ships.include?(computer_shot)
        @computer_hits +=1
-       add_hit_to_p_map(player_map, computer_shot)
+       add_hit_to_p_map(computer_shot)
      else
-       add_miss_to_p_map(player_map, computer_shot)
+       add_miss_to_p_map(computer_shot)
      end
   end
 
-  def add_hit_to_p_map(player_map, computer_shot)
+  def add_hit_to_p_map(computer_shot)
     puts "\n\nOh no. You were hit!".colorize(:light_red)
     puts "You were hit at position #{computer_shot}. This is guess number #{@computer_attempts}.".colorize(:yellow)
     if computer_shot.start_with?("A")
@@ -108,7 +109,7 @@ class Game
     @p_map
   end
 
-  def add_miss_to_p_map(player_map, computer_shot)
+  def add_miss_to_p_map(computer_shot)
     puts "Nice. I missed you!".colorize(:light_blue)
     puts "I guessed at #{computer_shot}.".colorize(:green)
     print " This is guess number #{@computer_attempts}.".colorize(:light_blue)
