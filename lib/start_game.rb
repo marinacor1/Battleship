@@ -44,7 +44,7 @@ class StartGame
     @ph = g.player_total_hits
     @ch = g.computer_total_hits
     while (@ph < 4) && (@ch < 4) do
-      @ph = g.player_total_hits 
+      @ph = g.player_total_hits
       @ch = g.computer_total_hits
       puts "player hits: #{@ph}"
       puts "c hits: #{@ch}"
@@ -58,13 +58,10 @@ class StartGame
       shm.print_player_map
     end
     phe = g.player_total_hits
-    #error here bc no implicit of nil so means its not exiting
     che = g.computer_total_hits
     eg = EndGame.new(phe, che)
-    #currently printing wrong number
     eg.final_message
     sw.time_difference
-    #time also seems very short
     end
 
   def erroneous_response

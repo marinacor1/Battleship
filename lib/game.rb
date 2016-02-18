@@ -80,7 +80,6 @@ class Game
 
   def hits_or_misses_for_player_map(computer_shot)
      @computer_attempts +=1
-     #breaks here because still running even after won
      if @player_ships.include?(computer_shot)
        add_hit_to_p_map(computer_shot)
      else
