@@ -28,6 +28,7 @@ module Responses
   end
 
   def sorry_message
+    puts "Sorry. :( You lost the game. Better luck next time!".colorize(:red)
   end
 
 

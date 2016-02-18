@@ -35,20 +35,23 @@ class StartGame
     sm.print_player_map
     cp = ComputerPlay.new
     icss = cp.computer_generated_ship_placement
+    sw = Stopwatch.new
     g = Game.new(piss, icss, coordinate_map_setup)
     player_shot = pp.shot_prompt
     hm_array = g.hit_or_miss(player_shot)
     sm.print_h_m_player_map(hm_array)
     g.end_turn
     computer_shot = cp.computer_shot
-    c_hm_array = g.hits_or_misses_for_player_map(coordinate_map_setup, computer_shot)
+    c_hm_array = g.hits_or_misses_for_player_map(computer_shot)
     shm = ShipMap.new(c_hm_array)
     shm.print_player_map
     #loop game
-    #end game
+    #end game flow:
     ph = g.player_total_hits
     ch = g.computer_total_hits
     eg = EndGame.new(ph, ch)
+    eg.final_message
+    sw.time_difference
     end
 
   def erroneous_response
