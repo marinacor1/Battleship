@@ -13,6 +13,7 @@ class ComputerPlay
     @b = ["b:", " ", " ", " ", " "]
     @c = ["c:", " ", " ", " ", " "]
     @d = ["d:", " ", " ", " ", " "]
+    @count = 15
   end
 
   def computer_generated_ship_placement
@@ -25,9 +26,10 @@ class ComputerPlay
   end
 
   def computer_shot
-    #calls on shot already taken 
-    shot = @possible_shots[rand(0..15)]
-    @possible_shots.delete_at(shot.to_i)
+    shot = @possible_shots[rand(0..(@count - 1))]
+    index = @possible_shots.index(shot)
+    @possible_shots.delete_at(index)
+    @count -=1
     shot
   end
 end

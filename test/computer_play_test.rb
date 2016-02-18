@@ -44,9 +44,9 @@ class ComputerPlayTest < Minitest::Test
   def test_computer_shot_will_not_call_on_same_earlier_shot
     cs = ComputerPlay.new
     cs_shot_array = []
-    16.times do
-      cs_shot_array << cs.computer_shot
-    end
-    assert cs_shot_array == cs_shot_array.uniq 
+      15.times do
+        cs_shot_array << cs.computer_shot
+      end
+    assert cs_shot_array == cs_shot_array.uniq
   end
 end
