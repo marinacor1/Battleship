@@ -6,8 +6,8 @@ class ShipMap
   attr_reader :player_a, :player_b, :player_c, :player_d
 
   def initialize(player_map)
-    #player_map: [["a:", "X", "X", "X", " "], ["b:", "X", "X", " ", " "], ["c:", " ", " ", " ", " "], ["d:", " ", " ", " ", " "]]
-    #player_map after hit: ["A1", "A2", "A3", "B1", "B2"]
+    #TODO player_map: [["a:", "X", "X", "X", " "], ["b:", "X", "X", " ", " "], ["c:", " ", " ", " ", " "], ["d:", " ", " ", " ", " "]]
+    #TODO player_map after hit: ["A1", "A2", "A3", "B1", "B2"]
     @player_a = player_map[0].join(" ")
     @player_b = player_map[1].join(" ")
     @player_c = player_map[2].join(" ")
