@@ -41,10 +41,13 @@ class StartGame
     cp = ComputerPlay.new
     icss = cp.computer_generated_ship_placement
     g = Game.new(piss, icss, coordinate_map_setup)
-    #these might not be getting called:
-    ph = g.player_total_hits #need to call these everytime
-    ch = g.computer_total_hits
-    while ph < 5 && ch < 5 do
+    @ph = g.player_total_hits
+    @ch = g.computer_total_hits
+    while (@ph < 4) && (@ch < 4) do
+      @ph = g.player_total_hits 
+      @ch = g.computer_total_hits
+      puts "player hits: #{@ph}"
+      puts "c hits: #{@ch}"
       player_shot = pp.shot_prompt
       hm_array = g.hit_or_miss(player_shot)
       sm.print_h_m_player_map(hm_array)
@@ -54,8 +57,6 @@ class StartGame
       shm = ShipMap.new(c_hm_array)
       shm.print_player_map
     end
-
-    binding.pry
     phe = g.player_total_hits
     #error here bc no implicit of nil so means its not exiting
     che = g.computer_total_hits

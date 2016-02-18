@@ -82,7 +82,6 @@ class Game
      @computer_attempts +=1
      #breaks here because still running even after won
      if @player_ships.include?(computer_shot)
-       @computer_hits +=1
        add_hit_to_p_map(computer_shot)
      else
        add_miss_to_p_map(computer_shot)
