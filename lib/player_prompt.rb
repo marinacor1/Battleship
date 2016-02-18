@@ -61,11 +61,6 @@ class PlayerPrompt
     coordinate_array = [@a, @b, @c, @d]
   end
 
-  def map_display
-    sm = ShipMap.new(@a, @b, @c, @d)
-    sm.print_initial_player_map
-  end
-
   def shot_prompt
     player_shot_prompt
     player_shot = gets.chomp.upcase

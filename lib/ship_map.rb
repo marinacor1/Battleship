@@ -21,4 +21,15 @@ class ShipMap
     puts "#{@player_d}"
   end
 
+  def print_h_m_player_map(hm_array)
+    puts "\n\nHere's a view of your hits and misses."
+    puts "An H is a hit. An M is a miss."
+    puts "==========="
+    puts ".  1 2 3 4"
+    puts "#{hm_array[0].join(" ")}"
+    puts "#{hm_array[1].join(" ")}"
+    puts "#{hm_array[2].join(" ")}"
+    puts "#{hm_array[3].join(" ")}\n"
+  end
+
 end

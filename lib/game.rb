@@ -27,25 +27,26 @@ class Game
   end
 
   def add_hit_to_map(player_shot)
-    binding.pry
     c_ships_array = @computer_ships.split(" ")
     if player_shot.start_with?("A")
       @a_hm_map.insert(player_shot[1].to_i, "H")
       @a_hm_map.delete_at(player_shot[1].to_i + 1)
     elsif player_shot.start_with?("B")
-      @b.insert(player_shot[1].to_i, "H")
-      @b.delete_at(player_shot[1].to_i + 1)
+      @b_hm_map.insert(player_shot[1].to_i, "H")
+      @b_hm_map.delete_at(player_shot[1].to_i + 1)
     elsif player_shot.start_with?("C")
-      @c.insert(player_shot[1].to_i, "H")
-      @c.delete_at(player_shot[1].to_i + 1)
+      @c_hm_map.insert(player_shot[1].to_i, "H")
+      @c_hm_map.delete_at(player_shot[1].to_i + 1)
     else
-      @d.insert(player_shot[1].to_i, "H")
-      @d.delete_at(player_shot[1].to_i + 1)
+      @d_hm_map.insert(player_shot[1].to_i, "H")
+      @d_hm_map.delete_at(player_shot[1].to_i + 1)
     end
-
+    # binding.pry
+    hm_array = [@a_hm_map, @b_hm_map, @c_hm_map, @d_hm_map]
   end
 
   def add_miss_to_map(player_shot)
+    # binding.pry
     if player_shot.start_with?("A")
       @a_hm_map.insert(player_shot[1].to_i, "M")
       @a_hm_map.delete_at(player_shot[1].to_i + 1)
@@ -59,7 +60,7 @@ class Game
       @d.insert(player_shot[1].to_i, "M")
       @d.delete_at(player_shot[1].to_i + 1)
     end
-
+    hm_array = [@a_hm_map, @b_hm_map, @c_hm_map, @d_hm_map]
   end
 
 end
