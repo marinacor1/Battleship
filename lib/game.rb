@@ -109,7 +109,7 @@ class Game
   def add_miss_to_p_map(computer_shot)
     puts "Nice. I missed you!".colorize(:light_blue)
     puts "I guessed at #{computer_shot}.".colorize(:green)
-    print " This is guess number #{@computer_attempts}.".colorize(:light_blue)
+    print "This is guess number #{@computer_attempts}.".colorize(:light_blue)
     @p_map
   end
 
