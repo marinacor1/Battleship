@@ -32,7 +32,7 @@ class StartGame
     piss = pp.player_initial_ship_setup
     coordinate_map_setup = pp.coordinate_setup
     sm = ShipMap.new(coordinate_map_setup)
-    sm.print_initial_player_map
+    sm.print_player_map
     cp = ComputerPlay.new
     icss = cp.computer_generated_ship_placement
     g = Game.new(piss, icss)
@@ -42,7 +42,8 @@ class StartGame
     g.end_turn
     computer_shot = cp.computer_shot
     c_hm_array = g.hits_or_misses_for_player_map(piss, computer_shot)
-    sm.print_h_m_player_map(hm_array)
+    sm = ShipMap.new(c_hm_array)
+    sm.print_player_map
     end
 
   def erroneous_response

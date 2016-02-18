@@ -3,7 +3,7 @@ require_relative 'player_prompt'
 require 'colorize'
 
 class ShipMap
-  attr_reader :player_a, :player_b, :player_c, :player_d 
+  attr_reader :player_a, :player_b, :player_c, :player_d
 
   def initialize(player_map)
     @player_a = player_map[0].join(" ")
@@ -12,11 +12,12 @@ class ShipMap
     @player_d = player_map[3].join(" ")
   end
 
-  def print_initial_player_map
+  def print_player_map
     puts "\n\nHere's a view of your ship layout."
     print "The "
     print "X ".colorize(:blue)
     puts "marks your ship placement."
+    puts "*Asterisks* mark where you have been hit."
     puts "==========="
     puts ".  1 2 3 4"
     puts "#{@player_a}"
