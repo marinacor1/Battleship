@@ -42,7 +42,7 @@ class StartGame
     g.end_turn
     computer_shot = cp.computer_shot
     c_hm_array = g.hits_or_misses_for_player_map(piss, computer_shot)
-    #c_hm_array comes out as nil
+    #c_hm_array = [["a:", " ", " ", " ", " "], ["b:", " ", " ", " ", " "], ["c:", " ", " ", " ", " "], ["d:", " ", " ", " ", " "]]
     sm = ShipMap.new(c_hm_array)
     sm.print_player_map
     end
