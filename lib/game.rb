@@ -76,10 +76,25 @@ class Game
     end
   end
 
-
   def hits_or_misses_for_player_map(player_map, computer_shot)
      binding.pry
+     if player_map.include?(computer_shot)
+       @computer_hits +=1
+       add_hit_to_p_map(player_map, computer_shot)
+     else
+       add_miss_to_p_map(player_map, computer_shot)
+     end
   end
+
+  def add_hit_to_p_map(player_map, computer_shot)
+
+  end
+
+  def add_miss_to_p_map(player_map, computer_shot)
+
+  end
+
+
 
   #needs to continue playing until player/ computer wins
   #computer needs to have hits or misses

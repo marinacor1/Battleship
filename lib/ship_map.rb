@@ -3,6 +3,7 @@ require_relative 'player_prompt'
 require 'colorize'
 
 class ShipMap
+  attr_reader :player_a, :player_b, :player_c, :player_d 
 
   def initialize(player_map)
     @player_a = player_map[0].join(" ")

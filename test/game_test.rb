@@ -21,6 +21,20 @@ class GameTest < Minitest::Test
     assert_equal ["c:", "M", " ", " ", " "], g.c_hm_map
   end
 
+  def test_game_identifies_when_computer_gets_hit
+    skip
+    g = Game.new("A1 A2 A3 B2 B3", "A1 A2 A3 B2 B3")
+    g.hits_or_misses_for_player_map("A1 A2 A3 B1 B2", "B1")
+  end
+
+  def test_game_identifies_when_computer_gets_miss
+    skip
+    g = Game.new("A1 A2 A3 B2 B3", "A1 A2 A3 B2 B3")
+    g.hits_or_misses_for_player_map("A1 A2 A3 B1 B2", "B1")
+  end
+
+
+
   def test_game_identifies_when_all_ships_on_one_side_are_sunk
 
   end
