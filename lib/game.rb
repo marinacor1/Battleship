@@ -5,7 +5,6 @@ class Game
   attr_reader :a_hm_map, :b_hm_map, :c_hm_map, :d_hm_map
 
   def initialize(player_initial_ship_setup, computer_initial_setup)
-    # binding.pry
     @player_ships = player_initial_ship_setup
     @computer_ships = computer_initial_setup
     @player_hits = 0
@@ -41,24 +40,22 @@ class Game
       @d_hm_map.insert(player_shot[1].to_i, "H")
       @d_hm_map.delete_at(player_shot[1].to_i + 1)
     end
-    # binding.pry
     hm_array = [@a_hm_map, @b_hm_map, @c_hm_map, @d_hm_map]
   end
 
   def add_miss_to_map(player_shot)
-    # binding.pry
     if player_shot.start_with?("A")
       @a_hm_map.insert(player_shot[1].to_i, "M")
       @a_hm_map.delete_at(player_shot[1].to_i + 1)
     elsif player_shot.start_with?("B")
-      @b.insert(player_shot[1].to_i, "M")
-      @b.delete_at(player_shot[1].to_i + 1)
+      @b_hm_map.insert(player_shot[1].to_i, "M")
+      @b_hm_map.delete_at(player_shot[1].to_i + 1)
     elsif player_shot.start_with?("C")
-      @c.insert(player_shot[1].to_i, "M")
-      @c.delete_at(player_shot[1].to_i + 1)
+      @c_hm_map.insert(player_shot[1].to_i, "M")
+      @c_hm_map.delete_at(player_shot[1].to_i + 1)
     else
-      @d.insert(player_shot[1].to_i, "M")
-      @d.delete_at(player_shot[1].to_i + 1)
+      @d_hm_map.insert(player_shot[1].to_i, "M")
+      @d_hm_map.delete_at(player_shot[1].to_i + 1)
     end
     hm_array = [@a_hm_map, @b_hm_map, @c_hm_map, @d_hm_map]
   end
