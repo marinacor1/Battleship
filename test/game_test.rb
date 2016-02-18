@@ -16,9 +16,13 @@ class GameTest < Minitest::Test
   end
 
   def test_game_identifies_accurately_when_a_ship_is_a_miss
+    g = Game.new("A1 A2 A3 B2 B3", "A1 A2 A3 B2 B3")
+    g.hit_or_miss("C1")
+    assert_equal ["c:", "M", " ", " ", " "], g.c_hm_map
   end
 
   def test_game_identifies_when_all_ships_on_one_side_are_sunk
+
   end
 
 

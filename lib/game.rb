@@ -29,6 +29,7 @@ class Game
 
   def add_hit_to_map(player_shot)
     puts "\n\nNice. It was a hit!"
+    # binding.pry
     c_ships_array = @computer_ships.split(" ")
     if player_shot.start_with?("A")
       @a_hm_map.insert(player_shot[1].to_i, "H")
@@ -77,7 +78,7 @@ class Game
 
 
   def hits_or_misses_for_player_map(player_map, computer_shot)
-
+     binding.pry
   end
 
   #needs to continue playing until player/ computer wins
