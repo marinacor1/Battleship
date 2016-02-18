@@ -44,6 +44,11 @@ class StartGame
     c_hm_array = g.hits_or_misses_for_player_map(coordinate_map_setup, computer_shot)
     shm = ShipMap.new(c_hm_array)
     shm.print_player_map
+    #loop game
+    #end game
+    ph = g.player_total_hits
+    ch = g.computer_total_hits
+    eg = EndGame.new(ph, ch)
     end
 
   def erroneous_response

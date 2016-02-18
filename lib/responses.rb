@@ -19,7 +19,15 @@ module Responses
   end
 
   def error_prompt
-    puts "\nThis is not a valid option. Try again."
+    puts "\nThis is not a valid option. Try again.".colorize(:red)
+  end
+
+  def congrats_message
+    puts "Congratulations!!!".colorize(:yellow)
+    puts "You won the game and sunk all of the computer's battleships. "
+  end
+
+  def sorry_message
   end
 
 

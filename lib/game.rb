@@ -91,6 +91,7 @@ class Game
   end
 
   def add_hit_to_p_map(computer_shot)
+    @computer_hits +=1
     puts "\n\nOh no. You were hit!".colorize(:light_red)
     puts "You were hit at position #{computer_shot}. This is guess number #{@computer_attempts}.".colorize(:yellow)
     if computer_shot.start_with?("A")
@@ -110,6 +111,14 @@ class Game
     puts "I guessed at #{computer_shot}.".colorize(:green)
     print " This is guess number #{@computer_attempts}.".colorize(:light_blue)
     @p_map
+  end
+
+  def player_total_hits
+    @player_hits
+  end
+
+  def computer_total_hits
+    @computer_hits
   end
 
 
