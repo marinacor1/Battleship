@@ -97,6 +97,7 @@ class Game
     puts "\n\nOh no. You were hit!".colorize(:light_red)
     puts "You were hit at position #{computer_shot}. This is guess number #{@computer_attempts}.".colorize(:yellow)
     binding.pry
+    #TODO the player_map is "A1 A2 A3 B3 B4" when it should be the one with Xs
     p_map = @player_ships.split(" ")
     if computer_shot.start_with?("A")
       p_map[0].insert(computer_shot[1].to_i, "*")
@@ -116,6 +117,8 @@ class Game
   end
 
   def add_miss_to_p_map(player_map, computer_shot)
+    #TODO the player_map is "A1 A2 A3 B3 B4" when it should be the one with Xs
+    binding.pry
     puts "Nice. I missed you!".colorize(:light_blue)
     puts "I guessed at #{computer_shot}.".colorize(:green)
     print " This is guess number #{@computer_attempts}.".colorize(:light_blue)
