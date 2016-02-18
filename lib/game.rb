@@ -17,15 +17,18 @@ class Game
 
 
   def hit_or_miss(player_shot)
-    if @computer_ships.include?(player_shot)
-      @player_hits +=1
-      add_hit_to_map(player_shot)
-    else
-      add_miss_to_map(player_shot)
-    end
+    # while @player_hits < 5 do
+      if @computer_ships.include?(player_shot)
+        @player_hits +=1
+        add_hit_to_map(player_shot)
+      else
+        add_miss_to_map(player_shot)
+      end
+    # end
   end
 
   def add_hit_to_map(player_shot)
+    puts "\n\nNice. It was a hit!"
     c_ships_array = @computer_ships.split(" ")
     if player_shot.start_with?("A")
       @a_hm_map.insert(player_shot[1].to_i, "H")
@@ -44,6 +47,7 @@ class Game
   end
 
   def add_miss_to_map(player_shot)
+    puts "\n\nOooh. It was a miss."
     if player_shot.start_with?("A")
       @a_hm_map.insert(player_shot[1].to_i, "M")
       @a_hm_map.delete_at(player_shot[1].to_i + 1)
@@ -59,5 +63,23 @@ class Game
     end
     hm_array = [@a_hm_map, @b_hm_map, @c_hm_map, @d_hm_map]
   end
+
+  def end_turn
+    puts "Press (E)nter to end your turn."
+    input = gets.chomp.upcase
+
+    if input == "E" || input == "ENTER"
+      abort("\nNow it's the computer's turn.")
+    else
+      puts "Incorrect message. Try again."
+    end
+  end
+
+  #needs to continue playing until player/ computer wins
+  #computer needs to have hits or misses
+#loop is pp.shot_prompt,
+#g.hit_or_miss,
+#sm.print_h_m_player_map,
+#feedback about game:
 
 end
