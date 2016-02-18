@@ -20,8 +20,8 @@ class ComputerPlay
     @computer_placement.flatten
   end
 
-  def computer_shot
-    shot =
-
-  end
+  # def computer_shot
+  #   shot =
+  #
+  # end
 end

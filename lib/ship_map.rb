@@ -1,5 +1,6 @@
 require 'pry'
 require_relative 'player_prompt'
+require 'colorize'
 
 class ShipMap
 
@@ -12,7 +13,9 @@ class ShipMap
 
   def print_initial_player_map
     puts "\n\nHere's a view of your ship layout."
-    puts "The X marks your ship placement."
+    print "The "
+    print "X ".colorize(:blue)
+    puts "marks your ship placement."
     puts "==========="
     puts ".  1 2 3 4"
     puts "#{@player_a}"
@@ -23,13 +26,17 @@ class ShipMap
 
   def print_h_m_player_map(hm_array)
     puts "\n\nHere's a view of your hits and misses."
-    puts "An H is a hit. An M is a miss."
+    print "An "
+    print "H ".colorize(:green)
+    print "is a hit. An "
+    print "M".colorize(:red)
+    puts " is a miss."
     puts "==========="
     puts ".  1 2 3 4"
-    puts "#{hm_array[0].join(" ")}"
-    puts "#{hm_array[1].join(" ")}"
-    puts "#{hm_array[2].join(" ")}"
-    puts "#{hm_array[3].join(" ")}\n"
+    puts "#{hm_array[0].join(" ")}".colorize(:light_green)
+    puts "#{hm_array[1].join(" ")}".colorize(:light_green)
+    puts "#{hm_array[2].join(" ")}".colorize(:light_green)
+    puts "#{hm_array[3].join(" ")}\n".colorize(:light_green)
   end
 
 end

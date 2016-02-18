@@ -1,7 +1,8 @@
+require 'colorize'
 module Responses
 
   def welcome_prompt
-    puts "Welcome to BATTLESHIP"
+    puts "Welcome to BATTLESHIP".colorize(:light_blue)
   end
 
   def game_choices_prompt
