@@ -1,3 +1,5 @@
+require_relative 'responses'
+
 class EndGame
   include Responses
 
