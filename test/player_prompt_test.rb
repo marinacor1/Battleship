@@ -9,17 +9,26 @@ class PlayerPromptTest < Minitest::Test
     pp.instance_of? PlayerPrompt
   end
 
-  def test_if_player_gives_invalid_input_outside_grid_returns_error
+  def test_if_player_gives_invalid_number_of_coordinates
     pp = PlayerPrompt.new
-    pp.coordinates_check("WW")
-    assert pp.error
+    assert_equal 0, pp.check("WW")
+  end
+
+  def test_if_player_gives_invalid_input_with_row_outside_grid_returns_error
+    pp = PlayerPrompt.new
+    assert_equal 0, pp.check("X1 A1 A2 B2 B3")
+  end
+
+  def test_if_player_gives_invalid_input_with_index_outside_grid_returns_error
+    skip
+    pp = PlayerPrompt.new
+    assert_equal 0, pp.check("A1 A2 B1 B2 B10")
   end
 
   def test_if_player_gives_invalid_input_of_non_linking_returns_error
     skip
     pp = PlayerPrompt.new
-    pp.coordinates_check("A1 A3 A4 B1 B2")
-    assert pp.error
+    assert_equal 4, pp.check("A2 A3 A4 B1 B3")
   end
 
   def test_player_prompt_organizes_coordinate_info
@@ -32,10 +41,17 @@ class PlayerPromptTest < Minitest::Test
     assert_equal ["d:", " ", " ", " ", " "], pp.d
   end
 
-  def test_PP_gives_error_if_invalid_shot_request
+  def test_PP_gives_error_if_invalid_shot_request_by_row
     skip
     pp = PlayerPrompt.new
-    pp.coordinates_check("Z4")
+    pp.check("Z4")
+    assert pp.error
+  end
+
+  def test_PP_gives_error_if_invalid_shot_request_by_index
+    skip
+    pp = PlayerPrompt.new
+    pp.coordinates_check("C12")
     assert pp.error
   end
 

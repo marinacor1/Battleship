@@ -14,6 +14,7 @@ class PlayerPrompt
     @b = ["b:", " ", " ", " ", " "]
     @c = ["c:", " ", " ", " ", " "]
     @d = ["d:", " ", " ", " ", " "]
+    @count = 0
   end
 
   def player_initial_ship_setup
@@ -24,17 +25,24 @@ class PlayerPrompt
     input
   end
 
-  def coordinates_check(input)
-    count = 0
+  def check(input)
     @possible_responses.each do |coordinate|
-      if @player_init_setup.split.include?(coordinate)
-        count +=1
+      if input.split.include?(coordinate)
+        @count +=1
+      end
+    end
+      @count
+    end
+
+  def coordinates_check(input)
+    @possible_responses.each do |coordinate|
+      if check(input)
       else
-        count = count
+        erroneous_response
       end
       #check to see if the guesses are linking i.e. not just d1 a3 b2 that passes
     end
-      if count == 5
+      if @count == 5
         coordinate_setup
       else
         erroneous_response
