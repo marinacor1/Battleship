@@ -16,7 +16,6 @@ class GameTest < Minitest::Test
   end
 
   def test_game_identifies_when_computer_gets_miss
-    skip
     g = Game.new("A1 A2 A3 B1 B2", "C1 C2 C3 B3 B4", [["a:", "X", "X", "X", " "], ["b:", "X", "X", " ", " "], ["c:", " ", " ", " ", " "], ["d:", " ", " ", " ", " "]])
     g.hit_or_miss("D1")
     assert_equal ["d:", "M", " ", " ", " "], g.d_hm_map
