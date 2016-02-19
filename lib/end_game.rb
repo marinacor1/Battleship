@@ -1,12 +1,15 @@
 require_relative 'responses'
+require_relative 'game'
 
 class EndGame
-  attr_reader :player_attempts, :computer_attempts
+  attr_reader :player_attempts, :computer_attempts, :player_hits, :computer_hits
   include Responses
 
-  def initialize(player_attempts, computer_attempts)
+  def initialize(player_attempts, computer_attempts, player_hits, computer_hits)
     @player_attempts = player_attempts
     @computer_attempts = computer_attempts
+    @player_hits = player_hits
+    @computer_hits = computer_hits
   end
 
   def final_message
