@@ -17,7 +17,7 @@ class ShipMap
     print "The "
     print "X ".colorize(:blue)
     puts "marks your ship placement."
-    puts "*Asterisks* mark where you have been hit."
+    puts "O's mark where you have been hit."
     puts "==============".colorize(:light_green)
     puts ".    1 2 3 4".colorize(:light_green)
     puts "  #{@player_a}  ".colorize(:light_green)

@@ -10,7 +10,6 @@ class Instructions
       if output
         abort( "\nExiting game.")
       end
-
   end
 
 end
