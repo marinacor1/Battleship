@@ -21,7 +21,7 @@ class ComputerPlayTest < Minitest::Test
     assert_equal 20, setup4.length
   end
 
-  def test_computer_guess_falls_in_grid
+  def test_computer_setup_falls_in_grid
     cs=  ComputerPlay.new
     guess = cs.computer_generated_ship_placement
     assert cs.possible_small_responses.flatten.include?(guess[0])
@@ -53,5 +53,13 @@ class ComputerPlayTest < Minitest::Test
         cs_shot_array << cs.computer_shot
       end
     assert cs_shot_array == cs_shot_array.uniq
+  end
+
+  def test_computer_shot_falls_in_grid
+    cs = ComputerPlay.new
+    cs_shot = cs.computer_shot
+    cs_shot2 = cs.computer_shot
+    assert cs.possible_shots.include?(cs_shot)
+    assert cs.possible_shots.include?(cs_shot2)
   end
 end

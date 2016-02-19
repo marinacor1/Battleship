@@ -9,17 +9,14 @@ class EndGameTest < Minitest::Test
     eg.instance_of? EndGame
   end
 
-  def test_end_game_provides_accurate_time
-
+  def test_end_game_gives_correct_attempts_number_if_player_wins
+    eg= EndGame.new(5, 3)
+    assert_equal 5, eg.player_attempts
   end
 
-  def test_end_game_gives_correct_shots_number
-
+  def test_end_game_gives_correct_attempts_number_if_computer_wins
+    eg= EndGame.new(2, 5)
+    assert_equal 5, eg.computer_attempts
   end
 
-  def test_end_game_gives_congrats_message_if_player_wins
-  end
-
-  def test_end_game_gives_sorry_message_if_player_loses
-  end
 end

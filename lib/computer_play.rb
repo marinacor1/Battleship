@@ -1,7 +1,7 @@
 require 'pry'
 
 class ComputerPlay
-  attr_reader :possible_small_responses, :possible_large_responses
+  attr_reader :possible_small_responses, :possible_large_responses, :possible_shots
   attr_accessor :computer_placement
 
   def initialize
@@ -14,6 +14,7 @@ class ComputerPlay
     @c = ["c:", " ", " ", " ", " "]
     @d = ["d:", " ", " ", " ", " "]
     @count = 15
+    @possible_shots_duplicate = @possible_shots.dup
   end
 
   def computer_generated_ship_placement
@@ -30,9 +31,9 @@ class ComputerPlay
   end
 
   def computer_shot
-    shot = @possible_shots[rand(0..(@count - 1))]
-    index = @possible_shots.index(shot)
-    @possible_shots.delete_at(index)
+    shot = @possible_shots_duplicate[rand(0..(@count - 1))]
+    index = @possible_shots_duplicate.index(shot)
+    @possible_shots_duplicate.delete_at(index)
     @count -=1
     shot
   end

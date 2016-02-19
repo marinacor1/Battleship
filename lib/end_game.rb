@@ -1,6 +1,7 @@
 require_relative 'responses'
 
 class EndGame
+  attr_reader :player_attempts, :computer_attempts
   include Responses
 
   def initialize(player_attempts, computer_attempts)
