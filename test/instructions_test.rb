@@ -9,6 +9,4 @@ class InstructionsTest < Minitest::Test
     i.instance_of? Instructions
   end
 
-  def test_instructions_ends_when_user_responds
-  end
 end

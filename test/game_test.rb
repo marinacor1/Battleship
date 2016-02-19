@@ -45,11 +45,4 @@ class GameTest < Minitest::Test
     assert_equal ["a:", "M", " ", " ", " "], g.a_hm_map
   end
 
-  def test_game_identifies_when_all_ships_on_one_side_are_sunk
-    skip
-    g = Game.new("A1 A2 A3 B1 B2", "C1 C2 C3 B3 B4", [["a:", "X", "X", "X", " "], ["b:", "X", "X", " ", " "], ["c:", " ", " ", " ", " "], ["d:", " ", " ", " ", " "]])
-
-  end
-
-
 end
