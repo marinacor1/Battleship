@@ -43,7 +43,7 @@ class StartGame
     g = Game.new(piss, icss, coordinate_map_setup)
     @ph = g.player_total_hits
     @ch = g.computer_total_hits
-    while (@ph < 4) && (@ch < 4) do
+    while (@ph < 4) && (@ch < 5) do
       @ph = g.player_total_hits
       @ch = g.computer_total_hits
       puts "Player Hits: #{@ph}"
@@ -52,6 +52,9 @@ class StartGame
       hm_array = g.hit_or_miss(player_shot)
       sm.print_h_m_player_map(hm_array)
       g.end_turn
+       if @ph == 5
+         break
+       end
       computer_shot = cp.computer_shot
       c_hm_array = g.hits_or_misses_for_player_map(computer_shot)
       shm = ShipMap.new(c_hm_array)

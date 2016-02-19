@@ -16,7 +16,7 @@ class PlayerPromptTest < Minitest::Test
 
   def test_player_will_not_let_you_pass_if_you_give_large_ships_first
     pp = PlayerPrompt.new
-    assert_equal 0, pp.all_ships_linked("A2 A3 A4 B3 B4")
+    assert_equal 1, pp.all_ships_linked("A2 A3 A4 B3 B4")
   end
 
   def test_if_player_gives_invalid_input_with_row_outside_grid_returns_error
@@ -36,7 +36,8 @@ class PlayerPromptTest < Minitest::Test
 
   def test_player_prompt_organizes_coordinate_info
     pp = PlayerPrompt.new
-    pp.coordinate_setup("B1 B2 A4 B4 C4")
+    pp.p_input = ("B1 B2 A4 B4 C4")
+    pp.coordinate_setup
     assert_equal ["a:", " ", " ", " ", "X"], pp.a
     assert_equal ["b:", "X", "X", " ", "X"], pp.b
     assert_equal ["c:", " ", " ", " ", "X"], pp.c
@@ -57,6 +58,12 @@ class PlayerPromptTest < Minitest::Test
     pp = PlayerPrompt.new
     assert_equal 5, pp.check("A1 A2 B1 B2 B3")
     assert_equal 2, pp.all_ships_linked("A1 A2 B1 B2 B3")
+  end
+
+  def test_pp_allows_player_to_advance_if_correct_coordinates_different_coordinates
+    pp = PlayerPrompt.new
+    assert_equal 5, pp.check("D1 D2 B4 C4 D4")
+    assert_equal 2, pp.all_ships_linked("D1 D2 B4 C4 D4")
   end
 
 end
