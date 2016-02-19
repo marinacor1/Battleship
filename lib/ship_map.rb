@@ -19,11 +19,11 @@ class ShipMap
     puts "marks your ship placement."
     puts "O's mark where you have been hit."
     puts "==============".colorize(:light_green)
-    puts ".    1 2 3 4".colorize(:light_green)
-    puts "  #{@player_a}  ".colorize(:light_green)
-    puts "  #{@player_b}  ".colorize(:light_green)
-    puts "  #{@player_c}  ".colorize(:light_green)
-    puts "  #{@player_d}  ".colorize(:light_green)
+    puts " . 1 2 3 4".colorize(:light_green)
+    puts "#{@player_a}  ".colorize(:light_green)
+    puts "#{@player_b}  ".colorize(:light_green)
+    puts "#{@player_c}  ".colorize(:light_green)
+    puts "#{@player_d}  ".colorize(:light_green)
   end
 
   def print_h_m_player_map(hm_array)

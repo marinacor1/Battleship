@@ -1,5 +1,5 @@
-require 'colorize'
-require 'responses'
+require_relative 'responses'
+
 class Instructions
   include Responses
 

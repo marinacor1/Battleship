@@ -1,10 +1,6 @@
 require_relative 'instructions'
-require_relative 'player_prompt'
 require_relative 'responses'
-require_relative 'stopwatch'
-require_relative 'game'
-require_relative 'ship_map'
-require_relative 'end_game'
+require_relative 'game_flow'
 
 class StartGame
   include Responses
@@ -21,6 +17,7 @@ class StartGame
   def user_output(output)
     if output == 'p'|| output == 'play'
       gf = GameFlow.new
+      gf.runner
     elsif output == 'i'|| output == 'instructions'
       i = Instructions.new
       i.instructions

@@ -65,8 +65,4 @@ module Responses
     puts "Nice. I missed you!".colorize(:light_blue)
   end
 
-
-
-
-
 end
