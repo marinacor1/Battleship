@@ -5,7 +5,7 @@ require './lib/end_game'
 
 class EndGameTest < Minitest::Test
   def test_battleship_creates_instance
-    eg= EndGame.new
+    eg= EndGame.new(5, 3)
     eg.instance_of? EndGame
   end
 

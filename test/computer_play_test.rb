@@ -33,7 +33,6 @@ class ComputerPlayTest < Minitest::Test
   end
 
   def test_computer_play_is_random
-    skip
     cs = ComputerPlay.new
     guess = cs.computer_generated_ship_placement
     cs2 = ComputerPlay.new
@@ -41,7 +40,7 @@ class ComputerPlayTest < Minitest::Test
     refute guess == guess2
   end
 
-  def test_computer_shot_will_not_call_on_same_earlier_shot
+  def test_computer_shot_will_not_repeat_shot
     cs = ComputerPlay.new
     cs_shot_array = []
       15.times do
