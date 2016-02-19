@@ -6,6 +6,7 @@ require_relative 'responses'
 class PlayerPrompt
   include Responses
   attr_reader :error
+  attr_accessor :a, :b, :c, :d
 
   def initialize
     @error = false
@@ -33,14 +34,14 @@ class PlayerPrompt
       end
     end
       count
-    end
+  end
 
-    def all_ships_linked(input)
-      all_ships = input.split(" ")
-      small_ships = all_ships[0] + all_ships[1]
-      large_ships = all_ships[2] + all_ships[3] + all_ships[4]
-      @possible_small_responses.include?(small_ships)  && @possible_large_responses.include?(large_ships)
-    end
+  def all_ships_linked(input)
+    all_ships = input.split(" ")
+    small_ships = all_ships[0] + all_ships[1]
+    large_ships = all_ships[2] + all_ships[3] + all_ships[4]
+    @possible_small_responses.include?(small_ships)  && @possible_large_responses.include?(large_ships)
+  end
 
   def coordinates_check(input)
       if check(input) && all_ships_linked(input)
