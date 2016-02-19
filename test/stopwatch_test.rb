@@ -9,5 +9,9 @@ class StopwatchTest < Minitest::Test
     sw.instance_of? Stopwatch
   end
 
+  def test_initial_time_is_a_time
+    sw = Stopwatch.new
+    assert_equal Time, sw.initial_time.class
+  end
 
 end
