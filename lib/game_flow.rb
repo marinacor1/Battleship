@@ -39,9 +39,9 @@ class GameFlow
       sm.print_h_m_player_map(hm_array)
       @ph = g.player_hits
       @ch = g.computer_hits
+      binding.pry
        if @ch == 5 || @ph == 5
         # binding.pry
-
         ending_game(g, sw)
       end
       g.end_turn
@@ -65,8 +65,6 @@ class GameFlow
     eg = EndGame.new(pta, cta)
     eg.final_message
     sw.time_difference
-    if :initial_time.class == Time
-      break
-    end
+    abort("\nExiting game.")
   end
 end
