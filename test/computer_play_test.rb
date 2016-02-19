@@ -11,10 +11,14 @@ class ComputerPlayTest < Minitest::Test
 
   def test_computer_gives_five_coordinates
     cs=  ComputerPlay.new
-    1000.times do
     setup = cs.computer_generated_ship_placement
-  end
-    assert_equal 5000, setup.length
+    setup2 = cs.computer_generated_ship_placement
+    setup3 = cs.computer_generated_ship_placement
+    setup4 = cs.computer_generated_ship_placement
+    assert_equal 5, setup.length
+    assert_equal 10, setup2.length
+    assert_equal 15, setup3.length
+    assert_equal 20, setup4.length
   end
 
   def test_computer_guess_falls_in_grid

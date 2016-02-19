@@ -15,7 +15,7 @@ module Responses
   end
 
   def player_shot_prompt
-    puts "\nNow it's your turn to fire. You will choose one coordinate for one shot.  If you guess correctly, it is a hit. If you guess incorrectly, it is a miss. If you guess outside the grid, you will get an error."
+    puts "\nNow it's your turn to fire. You will choose one coordinate for one shot.  If you guess correctly, it is a hit. If you guess incorrectly, it is a miss. \nIf you guess outside the grid, you will get an error.".colorize(:light_blue)
   end
 
   def error_prompt
@@ -23,12 +23,12 @@ module Responses
   end
 
   def congrats_message
-    puts "Congratulations!!!".colorize(:yellow)
+    puts "\n\nCongratulations!!!".colorize(:yellow)
     puts "You won the game and sunk all of the computer's battleships. "
   end
 
   def sorry_message
-    puts "Sorry. :( You lost the game. Better luck next time!".colorize(:red)
+    puts "\n\nSorry. :( You lost the game. Better luck next time!".colorize(:red)
   end
 
 

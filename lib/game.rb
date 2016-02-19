@@ -70,12 +70,12 @@ class Game
   end
 
   def end_turn
-    puts "Press (E)nter to end your turn."
+    puts "Press (E)nter to end your turn.".colorize(:light_yellow)
     input = gets.chomp.upcase
     if input == "E" || input == "ENTER"
-      puts "\nNow it's the computer's turn."
+      puts "\nNow it's the computer's turn.".colorize(:green)
     else
-      puts "Incorrect message. Try again."
+      puts "Incorrect message. Try again.".colorize(:red)
     end
   end
 
@@ -92,18 +92,17 @@ class Game
     @computer_hits +=1
     puts "\n\nOh no. You were hit!".colorize(:light_red)
     puts "You were hit at position #{computer_shot}. This is guess number #{@computer_attempts}.".colorize(:yellow)
-    hit_mark = "O".colorize(:red)
     if computer_shot.start_with?("A")
-      @p_map[0].insert(computer_shot[1].to_i, hit_mark)
+      @p_map[0].insert(computer_shot[1].to_i, "O")
       @p_map[0].delete_at(computer_shot[1].to_i + 1)
     elsif computer_shot.start_with?("B")
-      @p_map[1].insert(computer_shot[1].to_i, hit_mark)
+      @p_map[1].insert(computer_shot[1].to_i, "O")
       @p_map[1].delete_at(computer_shot[1].to_i + 1)
     elsif computer_shot.start_with?("C")
-      @p_map[2].insert(computer_shot[1].to_i, hit_mark)
+      @p_map[2].insert(computer_shot[1].to_i, "O")
       @p_map[2].delete_at(computer_shot[1].to_i + 1)
     else
-      @p_map[3].insert(computer_shot[1].to_i, hit_mark)
+      @p_map[3].insert(computer_shot[1].to_i, "O")
       @p_map[3].delete_at(computer_shot[1].to_i + 1)
     end
     @p_map

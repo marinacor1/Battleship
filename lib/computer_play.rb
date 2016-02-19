@@ -21,7 +21,11 @@ class ComputerPlay
     @possible_new_large_responses = @possible_large_responses.reject do |coordinates|
       coordinates.include?(@computer_placement.flatten[0]) || coordinates.include?(@computer_placement.flatten[1])
     end
-    @computer_placement << @possible_new_large_responses[rand(0..11)]
+    large_guess = @possible_new_large_responses[rand(0..11)]
+    if large_guess.nil?
+        large_guess =  @possible_new_large_responses[rand(0..11)]
+    end
+    @computer_placement << large_guess
     @computer_placement.flatten
   end
 
