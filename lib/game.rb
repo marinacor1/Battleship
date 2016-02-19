@@ -1,9 +1,11 @@
 require_relative 'player_prompt'
 require_relative 'computer_play'
+require_relative 'responses'
 require 'pry'
 require 'colorize'
 
 class Game
+  include Responses
   attr_reader :a_hm_map, :b_hm_map, :c_hm_map, :d_hm_map
   attr_accessor :computer_attempts, :player_attempts,
                 :p_map, :computer_hits, :player_hits
@@ -35,7 +37,7 @@ class Game
 
   def add_hit_to_map(player_shot)
     @player_accumulated_hits << player_shot
-    puts "\n\nNice. It was a hit! This is attempt number #{@player_attempts}."
+    puts "\n\nNice. It was a hit! This is attempt number #{@player_attempts}.".colorize(:green)
     if player_shot.start_with?("A")
       @a_hm_map.insert(player_shot[1].to_i, "H")
       @a_hm_map.delete_at(player_shot[1].to_i + 1)
@@ -53,7 +55,7 @@ class Game
   end
 
   def add_miss_to_map(player_shot)
-    puts "\n\nOooh. It was a miss. This is attempt number #{@player_attempts}."
+    puts "\n\nOooh. It was a miss. This is attempt number #{@player_attempts}.".colorize(:red)
     if player_shot.start_with?("A")
       @a_hm_map.insert(player_shot[1].to_i, "M")
       @a_hm_map.delete_at(player_shot[1].to_i + 1)
@@ -71,12 +73,12 @@ class Game
   end
 
   def end_turn
-    puts "Press (E)nter to end your turn.".colorize(:light_yellow)
+    end_turn_message
     input = gets.chomp.upcase
     if input == "E" || input == "ENTER"
-      puts "\nNow it's the computer's turn.".colorize(:green)
+    computers_turn_message
     else
-      puts "Incorrect message. Try again.".colorize(:red)
+      error_prompt
     end
   end
 
@@ -91,8 +93,8 @@ class Game
 
   def add_hit_to_p_map(computer_shot)
     @computer_hits +=1
-    puts "\n\nOh no. You were hit!".colorize(:light_red)
-    puts "You were hit at position #{computer_shot}. This is guess number #{@computer_attempts}.".colorize(:yellow)
+    hit_message
+    puts "\nYou were hit at position #{computer_shot}. This is guess number #{@computer_attempts}.".colorize(:yellow)
     if computer_shot.start_with?("A")
       @p_map[0].insert(computer_shot[1].to_i, "O")
       @p_map[0].delete_at(computer_shot[1].to_i + 1)
@@ -110,19 +112,10 @@ class Game
   end
 
   def add_miss_to_p_map(computer_shot)
-    puts "Nice. I missed you!".colorize(:light_blue)
+    miss_message
     puts "I guessed at #{computer_shot}.".colorize(:green)
     print "This is guess number #{@computer_attempts}.".colorize(:light_blue)
     @p_map
-  end
-
-
-  def player_total_attempts
-    @player_attempts
-  end
-
-  def computer_total_attempts
-    @computer_attempts
   end
 
 end

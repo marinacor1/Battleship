@@ -41,8 +41,8 @@ class StartGame
     cp = ComputerPlay.new
     icss = cp.computer_generated_ship_placement
     g = Game.new(piss, icss, coordinate_map_setup)
-    @ph = g.player_total_hits
-    @ch = g.computer_total_hits
+    @ph = g.player_hits
+    @ch = g.computer_hits
     while (@ph < 4) && (@ch < 6) do
       @ph = g.player_hits
       @ch = g.computer_hits
@@ -60,8 +60,8 @@ class StartGame
       shm = ShipMap.new(c_hm_array)
       shm.print_player_map
     end
-    pta = g.player_total_attempts
-    cta = g.computer_total_attempts
+    pta = g.player_attempts
+    cta = g.computer_attempts
     eg = EndGame.new(pta, cta)
     eg.final_message
     sw.time_difference
