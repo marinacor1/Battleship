@@ -8,6 +8,7 @@ require_relative 'ship_map'
 require_relative 'end_game'
 
 class GameFlow
+  attr_reader :ch, :ph
 
   def initial_runner
     sw = Stopwatch.new
