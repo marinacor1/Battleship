@@ -36,7 +36,6 @@ class PlayerPrompt
 
   def all_ships_linked(input)
     all_ships = input.split(" ")
-    # binding.pry
     small_ships = (all_ships[0] + " " + all_ships[1])
     large_ships = (all_ships[2] + " " + all_ships[3] + " " + all_ships[4])
     small_check = @possible_small_responses.find_all do |smalls|
@@ -45,7 +44,7 @@ class PlayerPrompt
     large_check = @possible_large_responses.find_all do  |larges|
        larges.join(" ") == large_ships
      end
-     small_check + large_check
+     small_check.length + large_check.length
   end
 
   def coordinates_check(input)

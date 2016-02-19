@@ -26,7 +26,7 @@ class PlayerPromptTest < Minitest::Test
 
   def test_if_player_gives_invalid_input_of_non_linking_returns_error
     pp = PlayerPrompt.new
-    refute pp.all_ships_linked("A2 A3 B1 B3 B4")
+    assert_equal 1, pp.all_ships_linked("A2 A3 B1 B3 B4")
   end
 
   def test_player_prompt_organizes_coordinate_info
