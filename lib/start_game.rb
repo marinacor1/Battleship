@@ -44,8 +44,8 @@ class StartGame
     @ph = g.player_total_hits
     @ch = g.computer_total_hits
     while (@ph < 4) && (@ch < 6) do
-      @ph = g.player_total_hits
-      @ch = g.computer_total_hits
+      @ph = g.player_hits
+      @ch = g.computer_hits
       puts "Player Hits: #{@ph}"
       puts "Computer Hits: #{@ch}"
       player_shot = pp.shot_prompt
@@ -60,9 +60,9 @@ class StartGame
       shm = ShipMap.new(c_hm_array)
       shm.print_player_map
     end
-    phe = g.player_total_hits
-    che = g.computer_total_hits
-    eg = EndGame.new(phe, che)
+    pta = g.player_total_attempts
+    cta = g.computer_total_attempts
+    eg = EndGame.new(pta, cta)
     eg.final_message
     sw.time_difference
     end

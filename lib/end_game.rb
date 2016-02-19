@@ -3,9 +3,9 @@ require_relative 'responses'
 class EndGame
   include Responses
 
-  def initialize(player_hits, computer_hits)
-    @player_hits = player_hits
-    @computer_hits = computer_hits
+  def initialize(player_attempts, computer_attempts)
+    @player_attempts = player_attempts
+    @computer_attempts = computer_attempts
   end
 
   def final_message

@@ -5,7 +5,8 @@ require 'colorize'
 
 class Game
   attr_reader :a_hm_map, :b_hm_map, :c_hm_map, :d_hm_map
-  attr_accessor :computer_attempts, :player_attempts, :p_map
+  attr_accessor :computer_attempts, :player_attempts,
+                :p_map, :computer_hits, :player_hits
 
   def initialize(player_ships, computer_initial_setup, player_coordinate_map)
     @player_ships = player_ships #"A1 A2 B1 B2 B3"
@@ -115,12 +116,13 @@ class Game
     @p_map
   end
 
-  def player_total_hits
-    @player_hits
+
+  def player_total_attempts
+    @player_attempts
   end
 
-  def computer_total_hits
-    @computer_hits
+  def computer_total_attempts
+    @computer_attempts
   end
 
 end
