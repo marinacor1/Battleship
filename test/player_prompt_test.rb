@@ -39,10 +39,9 @@ class PlayerPromptTest < Minitest::Test
   end
 
   def test_PP_gives_error_if_invalid_shot_request_by_row
-    skip
     pp = PlayerPrompt.new
-    pp.check("Z4")
-    assert pp.error
+    assert_equal 0, pp.check("Z4")
+
   end
 
   def test_PP_gives_error_if_invalid_shot_request_by_index

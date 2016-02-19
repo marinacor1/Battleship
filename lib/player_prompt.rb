@@ -5,8 +5,7 @@ require_relative 'responses'
 
 class PlayerPrompt
   include Responses
-  attr_reader :error
-  attr_accessor :a, :b, :c, :d
+  attr_accessor :a, :b, :c, :d, :error
 
   def initialize
     @error = false
