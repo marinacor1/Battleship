@@ -36,13 +36,20 @@ class PlayerPrompt
 
   def all_ships_linked(input)
     all_ships = input.split(" ")
-    small_ships = all_ships[0] + all_ships[1]
-    large_ships = all_ships[2] + all_ships[3] + all_ships[4]
-    @possible_small_responses.include?(small_ships)  && @possible_large_responses.include?(large_ships)
+    # binding.pry
+    small_ships = (all_ships[0] + " " + all_ships[1])
+    large_ships = (all_ships[2] + " " + all_ships[3] + " " + all_ships[4])
+    small_check = @possible_small_responses.find_all do |smalls|
+       smalls.join(" ") == small_ships
+     end
+    large_check = @possible_large_responses.find_all do  |larges|
+       larges.join(" ") == large_ships
+     end
+     small_check + large_check
   end
 
   def coordinates_check(input)
-      if check(input) && all_ships_linked(input)
+      if (check(input)) && (all_ships_linked(input) == 5)
       else
         erroneous_response
       end

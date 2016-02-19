@@ -118,8 +118,4 @@ class Game
     @computer_hits
   end
 
-
-
-  #needs to continue playing until player/ computer wins
-
 end

@@ -48,4 +48,10 @@ class PlayerPromptTest < Minitest::Test
     assert_equal 0, pp.check("C12")
   end
 
+  def test_pp_allows_player_to_advance_if_correct_coordinates
+    pp = PlayerPrompt.new
+    assert_equal 5, pp.check("A1 A2 B1 B2 B3")
+    assert pp.all_ships_linked("A1 A2 B1 B2 B3")
+  end
+
 end
