@@ -48,8 +48,4 @@ class PlayerPromptTest < Minitest::Test
     assert_equal 0, pp.check("C12")
   end
 
-  def test_after_play_player_is_prompted_to_end
-  end
-
-
 end
