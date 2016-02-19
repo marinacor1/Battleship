@@ -66,4 +66,10 @@ class PlayerPromptTest < Minitest::Test
     assert_equal 2, pp.all_ships_linked("D1 D2 B4 C4 D4")
   end
 
+  def test_pp_allows_ships_that_are_bottom_to_top
+    pp = PlayerPrompt.new
+    assert_equal 5, pp.check("C1 B1 D1 D2 D3")
+    assert_equal 2, pp.all_ships_linked("C1 B1 D1 D2 D3")
+  end
+
 end

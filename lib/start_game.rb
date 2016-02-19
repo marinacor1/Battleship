@@ -43,7 +43,7 @@ class StartGame
     g = Game.new(piss, icss, coordinate_map_setup)
     @ph = g.player_total_hits
     @ch = g.computer_total_hits
-    while (@ph < 4) && (@ch < 5) do
+    while (@ph < 4) && (@ch < 6) do
       @ph = g.player_total_hits
       @ch = g.computer_total_hits
       puts "Player Hits: #{@ph}"

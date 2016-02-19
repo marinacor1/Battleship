@@ -19,8 +19,7 @@ class PlayerPrompt
 
   def player_initial_ship_setup
     player_initial_ship_prompt
-    @p_input = gets.chomp.upcase
-    input = @p_input
+    input = gets.chomp.upcase
     coordinates_check(input)
     input
   end
@@ -40,16 +39,17 @@ class PlayerPrompt
     small_ships = (all_ships[0] + " " + all_ships[1])
     large_ships = (all_ships[2] + " " + all_ships[3] + " " + all_ships[4])
     small_check = @possible_small_responses.find_all do |smalls|
-       smalls.join(" ") == small_ships
+       smalls.join(" ") == small_ships || smalls.reverse.join(" ") == small_ships
      end
     large_check = @possible_large_responses.find_all do  |larges|
-       larges.join(" ") == large_ships
+       larges.join(" ") == large_ships || larges.reverse.join(" ") == large_ships
      end
      small_check.length + large_check.length
   end
 
   def coordinates_check(input)
       if (check(input) == 5) && (all_ships_linked(input) == 2)
+        @p_input = input
       else
         erroneous_response
       end
