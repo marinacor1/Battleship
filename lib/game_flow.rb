@@ -40,9 +40,7 @@ class GameFlow
       sm.print_h_m_player_map(hm_array)
       @ph = g.player_hits
       @ch = g.computer_hits
-      binding.pry
        if @ch == 5 || @ph == 5
-        # binding.pry
         ending_game(g, sw)
       end
       g.end_turn
@@ -52,9 +50,7 @@ class GameFlow
       shm.print_player_map
       @ph = g.player_hits
       @ch = g.computer_hits
-      # binding.pry
-       if @ch == 5 || @ph == 5 #why does this exit out of pry
-        # binding.pry
+       if @ch == 5 || @ph == 5
          ending_game(g, sw)
        end
      end
