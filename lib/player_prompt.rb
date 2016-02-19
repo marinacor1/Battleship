@@ -9,12 +9,13 @@ class PlayerPrompt
 
   def initialize
     @error = false
+    @possible_small_responses= [["A1", "A2"], ["A2", "A3"], ["A3", "A4"], ["B1", "B2"], ["B2", "B3"], ["B3", "B4"], ["C1", "C2"], ["C2", "C3"], ["C3", "C4"], ["D1", "D2"], ["D2", "D3"], ["D3", "D4"], ["A1", "B1"], ["B1", "C1"], ["C1", "D1"], ["A2", "B2"], ["B2", "C2"], ["C2", "D2"], ["A3", "B3"], ["B3", "C3"], ["C3", "D3"], ["A4", "B4"], ["B4", "C4"], ["C4", "D4"]]
+    @possible_large_responses = [["A1", "A2", "A3"], ["A2", "A3", "A4"], ["B1", "B2", "B3"], ["B2", "B3", "B4"], ["C1", "C2", "C3"], ["C2", "C3", "C4"], ["D1", "D2", "D3"], ["D2", "D3", "D4"], ["A1", "B1", "C1"], ["B1", "C1", "D1"], ["A2", "B2", "C2"], ["B2", "C2", "D2"], ["A3", "B3", "C3"], ["B3", "C3", "D3"], ["A4", "B4", "C4"], ["B4", "C4", "D4"]]
     @possible_responses = ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4", "D1", "D2", "D3", "D4"]
     @a = ["a:", " ", " ", " ", " "]
     @b = ["b:", " ", " ", " ", " "]
     @c = ["c:", " ", " ", " ", " "]
     @d = ["d:", " ", " ", " ", " "]
-    @count = 0
   end
 
   def player_initial_ship_setup
@@ -26,23 +27,28 @@ class PlayerPrompt
   end
 
   def check(input)
+    count = 0
     @possible_responses.each do |coordinate|
       if input.split.include?(coordinate)
-        @count +=1
+        count +=1
       end
     end
-      @count
+      count
+    end
+
+    def all_ships_linked(input)
+      all_ships = input.split(" ")
+      small_ships = all_ships[0] + all_ships[1]
+      large_ships = all_ships[2] + all_ships[3] + all_ships[4]
+      @possible_small_responses.include?(small_ships)  && @possible_large_responses.include?(large_ships)
     end
 
   def coordinates_check(input)
-    @possible_responses.each do |coordinate|
-      if check(input)
+      if check(input) && all_ships_linked(input)
       else
         erroneous_response
       end
-      #check to see if the guesses are linking i.e. not just d1 a3 b2 that passes
-    end
-      if @count == 5
+      if check(input) == 5
         coordinate_setup
       else
         erroneous_response
