@@ -30,7 +30,6 @@ class PlayerPromptTest < Minitest::Test
   end
 
   def test_player_prompt_organizes_coordinate_info
-    skip
     pp = PlayerPrompt.new
     pp.coordinate_setup("b1 b2 a4 b4 c4")#.split(" ").
     assert_equal ["a:", "X", "X", " ", "X"], pp.a

@@ -20,8 +20,7 @@ class PlayerPrompt
 
   def player_initial_ship_setup
     player_initial_ship_prompt
-    @player_init_setup = gets.chomp.upcase
-    input = @player_init_setup
+    input = gets.chomp.upcase
     coordinates_check(input)
     input
   end
@@ -49,14 +48,14 @@ class PlayerPrompt
         erroneous_response
       end
       if check(input) == 5
-        coordinate_setup
+        coordinate_setup(input)
       else
         erroneous_response
       end
   end
 
-  def coordinate_setup
-    input_array = @player_init_setup.split
+  def coordinate_setup(input)
+    input_array = input.split
     input_array.each do |coordinate|
       if coordinate.start_with?("A")
         @a.insert(coordinate[1].to_i, "X")
