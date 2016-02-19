@@ -19,7 +19,8 @@ class PlayerPrompt
 
   def player_initial_ship_setup
     player_initial_ship_prompt
-    input = gets.chomp.upcase
+    @p_input = gets.chomp.upcase
+    input = @p_input
     coordinates_check(input)
     input
   end
@@ -53,14 +54,14 @@ class PlayerPrompt
         erroneous_response
       end
       if check(input) == 5
-        coordinate_setup(input)
+        coordinate_setup
       else
         erroneous_response
       end
   end
 
-  def coordinate_setup(input)
-    input_array = input.split
+  def coordinate_setup
+    input_array = @p_input.split
     input_array.each do |coordinate|
       if coordinate.start_with?("A")
         @a.insert(coordinate[1].to_i, "X")
@@ -82,6 +83,17 @@ class PlayerPrompt
   def shot_prompt
     player_shot_prompt
     player_shot = gets.chomp.upcase
+    if shot_check?(player_shot)
+      player_shot
+    else
+      shot_prompt
+    end
+  end
+
+  def shot_check?(player_shot)
+    if @possible_responses.include?(player_shot)
+     true
+    end
   end
 
   def erroneous_response

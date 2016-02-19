@@ -46,8 +46,8 @@ class StartGame
     while (@ph < 4) && (@ch < 4) do
       @ph = g.player_total_hits
       @ch = g.computer_total_hits
-      puts "player hits: #{@ph}"
-      puts "c hits: #{@ch}"
+      puts "Player Hits: #{@ph}"
+      puts "Computer Hits: #{@ch}"
       player_shot = pp.shot_prompt
       hm_array = g.hit_or_miss(player_shot)
       sm.print_h_m_player_map(hm_array)
