@@ -40,9 +40,9 @@ class GameFlow
       sm.print_h_m_player_map(hm_array)
       @ph = g.player_hits
       @ch = g.computer_hits
-       if @ch == 5 || @ph == 5
-        ending_game(g, sw)
-      end
+      #  if @ch == 5 || @ph == 5
+      #   ending_game(g, sw)
+      # end
       g.end_turn
       computer_shot = cp.computer_shot
       c_hm_array = g.hits_or_misses_for_player_map(computer_shot)
@@ -50,18 +50,24 @@ class GameFlow
       shm.print_player_map
       @ph = g.player_hits
       @ch = g.computer_hits
-       if @ch == 5 || @ph == 5
-         ending_game(g, sw)
-       end
      end
+
+      pta = g.player_attempts
+      cta = g.computer_attempts
+      eg = EndGame.new(pta, cta)
+      eg.final_message
+      sw.time_difference
+      #  if @ch == 5 || @ph == 5
+      #    ending_game(g, sw)
+      #  end
   end
 
-  def ending_game(g, sw)
-    pta = g.player_attempts
-    cta = g.computer_attempts
-    eg = EndGame.new(pta, cta)
-    eg.final_message
-    sw.time_difference
-    abort("\nExiting game.")
-  end
+  # def ending_game(g, sw)
+  #   pta = g.player_attempts
+  #   cta = g.computer_attempts
+  #   eg = EndGame.new(pta, cta)
+  #   eg.final_message
+  #   sw.time_difference
+  #   # abort("\nExiting game.")
+  # end
 end
