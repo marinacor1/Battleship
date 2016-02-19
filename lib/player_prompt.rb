@@ -48,7 +48,7 @@ class PlayerPrompt
   end
 
   def coordinates_check(input)
-      if (check(input)) && (all_ships_linked(input) == 5)
+      if (check(input) == 5) && (all_ships_linked(input) == 2)
       else
         erroneous_response
       end
