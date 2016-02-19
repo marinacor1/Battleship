@@ -17,7 +17,7 @@ class StartGame
   def user_output(output)
     if output == 'p'|| output == 'play'
       gf = GameFlow.new
-      gf.runner
+      gf.initial_runner
     elsif output == 'i'|| output == 'instructions'
       i = Instructions.new
       i.instructions
