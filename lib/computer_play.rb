@@ -17,6 +17,19 @@ class ComputerPlay
     @possible_shots_duplicate = @possible_shots.dup
   end
 
+  def possible_small_responses
+    psr = []
+    first = ["A"]["B"]["C"]["D"]
+    second = ["1" , "2", "3", "4"]
+    first.each_with_index [row, index]
+      if index == 0
+
+    end
+
+
+
+  end
+
   def computer_generated_ship_placement
     @computer_placement << @possible_small_responses[rand(0..23)]
     @possible_new_large_responses = @possible_large_responses.reject do |coordinates|
