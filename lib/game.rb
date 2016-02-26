@@ -11,8 +11,8 @@ class Game
                 :p_map, :computer_hits, :player_hits
 
   def initialize(player_ships, computer_initial_setup, player_coordinate_map)
-    @player_ships = player_ships #"A1 A2 B1 B2 B3"
-    @computer_ships = computer_initial_setup #["D1", "D2", "A3", "B3", "C3"]
+    @player_ships = player_ships 
+    @computer_ships = computer_initial_setup
     @player_hits = 0
     @computer_hits = 0
     @player_attempts = 0
@@ -21,8 +21,7 @@ class Game
     @b_hm_map = ["b:", " ", " ", " ", " "]
     @c_hm_map = ["c:", " ", " ", " ", " "]
     @d_hm_map = ["d:", " ", " ", " ", " "]
-    @p_map = player_coordinate_map #[["a:", "X", "X", " ", " "], ["b:", "X", "X", "X", " "], ["c:", " ", " ", " ", " "], ["d:", " ", " ", " ", " "]]
-    @player_accumulated_hits = []
+    @p_map = player_coordinate_map
   end
 
   def hit_or_miss(player_shot)
