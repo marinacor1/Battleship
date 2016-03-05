@@ -1,6 +1,4 @@
 
-
-
 # BattleShip
 
 This goal of this project is to build a playable game of Battleship that runs in a REPL interface.  A player plays against a computer.
