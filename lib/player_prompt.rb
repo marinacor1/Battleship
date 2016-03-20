@@ -86,22 +86,32 @@ class PlayerPrompt
     end
   end
 
+  # def coordinate_setup
+  #   input_array = @p_input.split
+  #   input_array.each do |coordinate|
+  #     if coordinate.start_with?("A")
+  #       @a.insert(coordinate[1].to_i, "X")
+  #       @a.delete_at(coordinate[1].to_i + 1)
+  #     elsif coordinate.start_with?("B")
+  #       @b.insert(coordinate[1].to_i, "X")
+  #       @b.delete_at(coordinate[1].to_i + 1)
+  #     elsif coordinate.start_with?("C")
+  #       @c.insert(coordinate[1].to_i, "X")
+  #       @c.delete_at(coordinate[1].to_i + 1)
+  #     else
+  #       @d.insert(coordinate[1].to_i, "X")
+  #       @d.delete_at(coordinate[1].to_i + 1)
+  #     end
+  #   end
+  #   coordinate_array = [@a, @b, @c, @d]
+  # end
+
   def coordinate_setup
     input_array = @p_input.split
+    coordinate_match = {"A" => @a, "B" => @b, "C" => @c, "D" => @d}
     input_array.each do |coordinate|
-      if coordinate.start_with?("A")
-        @a.insert(coordinate[1].to_i, "X")
-        @a.delete_at(coordinate[1].to_i + 1)
-      elsif coordinate.start_with?("B")
-        @b.insert(coordinate[1].to_i, "X")
-        @b.delete_at(coordinate[1].to_i + 1)
-      elsif coordinate.start_with?("C")
-        @c.insert(coordinate[1].to_i, "X")
-        @c.delete_at(coordinate[1].to_i + 1)
-      else
-        @d.insert(coordinate[1].to_i, "X")
-        @d.delete_at(coordinate[1].to_i + 1)
-      end
+      coordinate_match[coordinate[0]].insert(coordinate[1]).to_i, "X"
+      coordinate_match[coordinate[0]].delete_at(coordinate[1].to_i + 1)
     end
     coordinate_array = [@a, @b, @c, @d]
   end
