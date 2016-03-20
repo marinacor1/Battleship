@@ -110,7 +110,7 @@ class PlayerPrompt
     input_array = @p_input.split
     coordinate_match = {"A" => @a, "B" => @b, "C" => @c, "D" => @d}
     input_array.each do |coordinate|
-      coordinate_match[coordinate[0]].insert(coordinate[1]).to_i, "X"
+      coordinate_match[coordinate[0]].insert(coordinate[1].to_i, "X")
       coordinate_match[coordinate[0]].delete_at(coordinate[1].to_i + 1)
     end
     coordinate_array = [@a, @b, @c, @d]
