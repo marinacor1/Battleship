@@ -8,10 +8,10 @@ class Game
   include Responses
   attr_reader :a_hm_map, :b_hm_map, :c_hm_map, :d_hm_map
   attr_accessor :computer_attempts, :player_attempts,
-                :p_map, :computer_hits, :player_hits
+                :p_map, :computer_hits, :player_hits, :player_accumulated_hits
 
   def initialize(player_ships, computer_initial_setup, player_coordinate_map)
-    @player_ships = player_ships 
+    @player_ships = player_ships
     @computer_ships = computer_initial_setup
     @player_hits = 0
     @computer_hits = 0
@@ -22,6 +22,7 @@ class Game
     @c_hm_map = ["c:", " ", " ", " ", " "]
     @d_hm_map = ["d:", " ", " ", " ", " "]
     @p_map = player_coordinate_map
+    @player_accumulated_hits = []
   end
 
   def hit_or_miss(player_shot)

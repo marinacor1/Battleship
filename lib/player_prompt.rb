@@ -19,19 +19,43 @@ class PlayerPrompt
 
   def player_initial_ship_setup
     player_initial_ship_prompt
-    input = gets.chomp.upcase
+    input = gets.chomp.upcase #TODO need to reset the input if does not pass the coordintes check
     coordinates_check(input)
     input
   end
 
   def check(input)
     count = 0
-    @possible_responses.each do |coordinate|
-      if input.split.include?(coordinate)
-        count +=1
+    count_small = small_check(input)
+    count_large = large_check(input)
+    count = count_small + count_large
+  end
+
+  def small_check(input)
+    count = 0
+    small_responses = []
+    small_responses << input.split[0]
+    small_responses << input.split[1]
+    @possible_small_responses.each do |coordinate|
+      if small_responses == coordinate #need to create check that they are a pair
+        count +=2
       end
     end
-      count
+    count
+  end
+
+  def large_check(input)
+    count = 0
+    large_responses = []
+    large_responses << input.split[2]
+    large_responses << input.split[3]
+    large_responses << input.split[4]
+    @possible_large_responses.each do |coordinate|
+      if large_responses == coordinate #need to create check that they are a pair
+        count +=3
+      end
+    end
+    count
   end
 
   def all_ships_linked(input)
@@ -48,16 +72,18 @@ class PlayerPrompt
   end
 
   def coordinates_check(input)
-      if (check(input) == 5) && (all_ships_linked(input) == 2)
-        @p_input = input
-      else
-        erroneous_response
-      end
-      if check(input) == 5
-        coordinate_setup
-      else
-        erroneous_response
-      end
+    if (check(input) == 5) && (all_ships_linked(input) == 2)
+      @p_input = input
+    else
+      erroneous_response
+      input = gets.chomp.upcase
+    end
+    if check(input) == 5
+      coordinate_setup
+    else
+      erroneous_response
+      input = gets.chomp.upcase
+    end
   end
 
   def coordinate_setup

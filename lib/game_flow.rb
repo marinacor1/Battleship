@@ -28,6 +28,7 @@ class GameFlow
 
   def game_time(sw, pp, piss, coordinate_map_setup, sm, cp, icss)
     g = Game.new(piss, icss, coordinate_map_setup)
+    #TODO currently the piss does not reset when a person types wrong and then types right
     @ph = g.player_hits
     @ch = g.computer_hits
     while (@ph < 5) && (@ch < 14) do
